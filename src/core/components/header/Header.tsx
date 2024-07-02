@@ -1,3 +1,4 @@
+import styles from "./header.module.css";
 import { Component, ReactNode } from "react";
 
 type HeaderState = {
@@ -14,15 +15,19 @@ export default class Header extends Component<HeaderProps, HeaderState> {
   };
   render(): ReactNode {
     return (
-      <header className="header">
+      <header className={styles.header}>
         <input
+          className={styles.input}
           type="text"
           value={this.state.value}
           onInput={(e) =>
             this.setState({ value: (e.target as HTMLInputElement).value })
           }
         />
-        <button onClick={() => this.props.submit(this.state.value)}>
+        <button
+          className={styles.submit}
+          onClick={() => this.props.submit(this.state.value)}
+        >
           Search
         </button>
       </header>
