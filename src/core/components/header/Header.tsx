@@ -1,3 +1,4 @@
+import { LS_KEY } from "../../../App";
 import styles from "./header.module.css";
 import { Component, ReactNode } from "react";
 
@@ -11,8 +12,13 @@ type HeaderProps = {
 
 export default class Header extends Component<HeaderProps, HeaderState> {
   state = {
-    value: "",
+    value: localStorage.getItem(LS_KEY) || "",
   };
+
+  componentDidMount(): void {
+    this.props.submit(this.state.value);
+  }
+
   render(): ReactNode {
     return (
       <header className={styles.header}>

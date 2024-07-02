@@ -3,6 +3,7 @@
   width: min(1000px, 100%);
   margin-inline: auto;
   padding: 10px;
+  box-sizing: border-box;
 }
 
 .list {
