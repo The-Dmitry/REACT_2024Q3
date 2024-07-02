@@ -1,0 +1,12 @@
+.main {
+  max-width: 1000px;
+  margin-inline: auto;
+  padding: 10px;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  flex-wrap: wrap;
+}

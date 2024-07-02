@@ -1,3 +1,4 @@
+import styles from "./main.module.css";
 import { Component, ReactNode } from "react";
 import CardData from "../../../models/CardData";
 import Card from "../../../shared/components/card/Card";
@@ -9,8 +10,8 @@ type MainProps = {
 export default class Main extends Component<MainProps> {
   render(): ReactNode {
     return (
-      <main className="main">
-        <ul className="list">
+      <main className={styles.main}>
+        <ul className={styles.list}>
           {this.props.data.map((info) => (
             <Card key={info.name} {...info} />
           ))}
