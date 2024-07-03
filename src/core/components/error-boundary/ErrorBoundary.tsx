@@ -1,4 +1,4 @@
-import { Component, ReactNode } from "react";
+import { Component, ErrorInfo, ReactNode } from "react";
 import Fallback from "../fallback/Fallback";
 
 type Props = {
@@ -10,15 +10,16 @@ type State = {
 };
 
 export default class ErrorBoundary extends Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      error: false,
-    };
-  }
+  state = {
+    error: false,
+  };
 
   static getDerivedStateFromError() {
     return { error: true };
+  }
+
+  componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
+    console.log(error, errorInfo);
   }
 
   render(): ReactNode {

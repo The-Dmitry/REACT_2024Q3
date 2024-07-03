@@ -44,7 +44,7 @@ export default class App extends Component<Record<string, unknown>, AppState> {
     try {
       this.setState({ isLoading: true });
       const response = await fetch(
-        `https://swapi.dev/api/people/?page=1${search ? `&search=${search}` : ""}`
+        `https://swapi.dev/api/people/?page=1${search ? `&search=${search}` : ""}`,
       );
 
       if (response.ok) {
