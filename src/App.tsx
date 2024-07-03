@@ -9,21 +9,32 @@ import { ApiResponse } from "./models/ApiResponse";
 interface AppState {
   data: CardData[];
   isLoading: boolean;
+  error: boolean;
 }
 
 export const LS_KEY = "MY_COOL_UNIQ_REACT_KEY";
 
-export default class App extends Component<undefined, AppState> {
+export default class App extends Component<Record<string, unknown>, AppState> {
   state = {
     data: [],
     isLoading: false,
+    error: false,
   };
 
   render(): ReactNode {
+    if (this.state.error) {
+      throw new Error("Some text");
+    }
     return (
       <>
         <Header submit={(value) => this.getData(value)} />
         {this.state.isLoading ? <Loader /> : <Main data={this.state.data} />}
+        <button
+          className="error-button"
+          onClick={() => this.setState({ error: true })}
+        >
+          Throw Error
+        </button>
       </>
     );
   }
@@ -40,8 +51,8 @@ export default class App extends Component<undefined, AppState> {
         const data: ApiResponse = await response.json();
         this.setState({ data: data.results });
       }
-    } catch (e) {
-      console.log(e);
+    } catch {
+      this.setState({ data: [] });
     } finally {
       this.setState({ isLoading: false });
       this.lsHandler(search);

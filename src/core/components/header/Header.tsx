@@ -1,4 +1,5 @@
 import { LS_KEY } from "../../../App";
+import Button from "../../../shared/components/button/Button";
 import styles from "./header.module.css";
 import { Component, ReactNode } from "react";
 
@@ -30,12 +31,10 @@ export default class Header extends Component<HeaderProps, HeaderState> {
             this.setState({ value: (e.target as HTMLInputElement).value })
           }
         />
-        <button
-          className={styles.submit}
-          onClick={() => this.props.submit(this.state.value)}
-        >
-          Search
-        </button>
+        <Button
+          callback={() => this.props.submit(this.state.value)}
+          text="Search"
+        ></Button>
       </header>
     );
   }
