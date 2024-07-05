@@ -5,6 +5,7 @@ import CardData from "./models/CardData";
 import Main from "./core/components/main/Main";
 import Loader from "./shared/components/loader/Loader";
 import { ApiResponse } from "./models/ApiResponse";
+// import getCardData from "./shared/utils/getData/getCardData";
 
 interface AppState {
   data: CardData[];
@@ -13,6 +14,33 @@ interface AppState {
 }
 
 export const LS_KEY = "MY_COOL_UNIQ_REACT_KEY";
+
+// export default function App() {
+//   const [data, setData] = useState<CardData[]>([])
+//   const [isLoading, setIsLoading] = useState<boolean>(false)
+//   const [error, setError] = useState<boolean>(false)
+
+//   const getData = async () => {
+//     setIsLoading(true)
+//     const result = await getCardData()
+//     setData(result)
+//     setIsLoading(false)
+
+//   }
+
+//   return (
+//     <>
+//       <Header submit={(value) => this.getData(value)} />
+//       {this.state.isLoading ? <Loader /> : <Main data={this.state.data} />}
+//       <button
+//         className="error-button"
+//         onClick={() => this.setState({ error: true })}
+//       >
+//         Throw Error
+//       </button>
+//     </>
+//   );
+// }
 
 export default class App extends Component<Record<string, unknown>, AppState> {
   state = {
