@@ -1,13 +1,15 @@
 import { useState } from "react";
 import Button from "../../../shared/components/button/Button";
 import styles from "./header.module.css";
+// import { LS_KEY } from "../../../shared/hooks/useCardQuery/UseCardQuery";
 
 type HeaderProps = {
   submit: (value: string) => void;
 };
 
-export default function Header({ submit }: HeaderProps) {
+const Header = ({ submit }: HeaderProps) => {
   const [value, setValue] = useState("");
+  console.log("header render");
   return (
     <header className={styles.header}>
       <input
@@ -19,4 +21,6 @@ export default function Header({ submit }: HeaderProps) {
       <Button callback={() => submit(value)} text="Search"></Button>
     </header>
   );
-}
+};
+
+export default Header;

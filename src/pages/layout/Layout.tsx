@@ -1,11 +1,10 @@
 import { useState } from "react";
-import "./App.css";
-import Header from "./core/components/header/Header";
-import Main from "./core/components/main/Main";
-import Loader from "./shared/components/loader/Loader";
-import CardData from "./models/CardData";
+import CardData from "../../models/CardData";
+import Header from "../../core/components/header/Header";
+import Loader from "../../shared/components/loader/Loader";
+import Main from "../../core/components/main/Main";
 
-export default function App() {
+export default function Layout() {
   const [error, setError] = useState<boolean>(false);
   const isLoading = false;
   const cardData: CardData[] = [];
