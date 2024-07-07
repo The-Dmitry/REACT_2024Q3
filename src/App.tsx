@@ -23,7 +23,7 @@ export default class App extends Component<Record<string, unknown>, AppState> {
 
   render(): ReactNode {
     if (this.state.error) {
-      throw new Error("Some text");
+      throw new Error("Red button is pressed");
     }
     return (
       <>
