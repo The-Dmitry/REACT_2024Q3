@@ -1,14 +1,15 @@
 import { memo, useState } from "react";
 import Button from "../../../shared/components/button/Button";
 import styles from "./header.module.css";
-// import { LS_KEY } from "../../../shared/hooks/useCardQuery/UseCardQuery";
 
 type HeaderProps = {
   submit: (value: string) => void;
 };
 
 const Header = memo(({ submit }: HeaderProps) => {
+  console.log("render header");
   const [value, setValue] = useState("");
+
   return (
     <header className={styles.header}>
       <input
