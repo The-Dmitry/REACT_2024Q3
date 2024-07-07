@@ -7,7 +7,6 @@ type HeaderProps = {
 };
 
 const Header = memo(({ submit }: HeaderProps) => {
-  console.log("render header");
   const [value, setValue] = useState("");
 
   return (

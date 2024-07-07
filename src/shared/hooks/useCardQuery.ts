@@ -30,7 +30,6 @@ export default function UseCardQuery() {
         setCardData(data);
         setIsLoading(false);
       };
-      console.log(page, currentPage);
       makeQuery();
     }
     if (!page) {
@@ -40,6 +39,7 @@ export default function UseCardQuery() {
 
   const setNewSearchWord = useCallback(
     (text: string) => {
+      setCurrentPage(0);
       setPageNumber(1);
       setSearchWord(text);
     },
