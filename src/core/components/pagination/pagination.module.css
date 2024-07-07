@@ -1,9 +1,8 @@
 .pagination {
   display: flex;
   gap: 10px;
-  margin-inline: auto;
-  grid-row: 3 / 4;
-  margin-bottom: 20px;
+  margin: 0 auto;
+  width: fit-content;
 }
 
 .button {

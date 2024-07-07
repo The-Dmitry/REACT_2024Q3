@@ -8,34 +8,42 @@ export default function UseCardQuery() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [cardData, setCardData] = useState<ApiResponse>();
   const [searchWord, setSearchWord] = useState("");
+  const [currentPage, setCurrentPage] = useState(0);
 
-  const resetPageNumber = useCallback(() => {
-    setSearchParams((params) => {
-      params.set("page", "1");
-      return params;
-    });
-  }, [setSearchParams]);
+  const setPageNumber = useCallback(
+    (num: number) => {
+      setSearchParams((params) => {
+        params.set("page", `${num}`);
+        return params;
+      });
+    },
+    [setSearchParams]
+  );
 
   useEffect(() => {
-    const makeQuery = async () => {
-      setIsLoading(true);
-      const page = searchParams.get("page");
-      if (!page) {
-        resetPageNumber();
-      }
-      const data = await getCardList(page, searchWord);
-      setCardData(data);
-      setIsLoading(false);
-    };
-    makeQuery();
-  }, [resetPageNumber, searchParams, searchWord]);
+    const page = searchParams.get("page");
+    if (page && page !== `${currentPage}`) {
+      setCurrentPage(+page);
+      const makeQuery = async () => {
+        setIsLoading(true);
+        const data = await getCardList(page, searchWord);
+        setCardData(data);
+        setIsLoading(false);
+      };
+      console.log(page, currentPage);
+      makeQuery();
+    }
+    if (!page) {
+      setPageNumber(1);
+    }
+  }, [setPageNumber, searchParams, searchWord, currentPage]);
 
   const setNewSearchWord = useCallback(
     (text: string) => {
-      resetPageNumber();
+      setPageNumber(1);
       setSearchWord(text);
     },
-    [resetPageNumber]
+    [setPageNumber]
   );
 
   return { isLoading, cardData, setNewSearchWord };

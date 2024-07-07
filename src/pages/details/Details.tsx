@@ -1,9 +1,11 @@
-// import { useSearchParams } from "react-router-dom";
+import styles from "./details.module.css";
+import { useSearchParams } from "react-router-dom";
 
 export default function Details() {
-  // const [searchParams, setSearchParams] = useSearchParams();
-  // if (!searchParams.get("details")) {
-  //   return null;
-  // }
-  return <div>details</div>;
+  const searchParams = useSearchParams()[0];
+  const id = searchParams.get("details");
+  if (!id) {
+    return null;
+  }
+  return <div className={styles.details}>details {id}</div>;
 }

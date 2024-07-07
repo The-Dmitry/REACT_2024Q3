@@ -1,3 +1,4 @@
+import styles from "./layout.module.css";
 import { useState } from "react";
 import Header from "../../core/components/header/Header";
 import Loader from "../../shared/components/loader/Loader";
@@ -17,12 +18,20 @@ export default function Layout() {
   return (
     <>
       <Header submit={setNewSearchWord} />
-      {isLoading ? <Loader /> : cardData && <Main data={cardData.results} />}
-      <Pagination totalCount={cardData?.count || 1}></Pagination>
+      <div className={styles.container}>
+        <section className={styles.list}>
+          {isLoading ? (
+            <Loader />
+          ) : (
+            cardData && <Main data={cardData.results} />
+          )}
+          <Pagination totalCount={cardData?.count || 0}></Pagination>
+        </section>
+        <Outlet />
+      </div>
       <button className="error-button" onClick={() => setError(true)}>
         Throw Error
       </button>
-      <Outlet />
     </>
   );
 }
