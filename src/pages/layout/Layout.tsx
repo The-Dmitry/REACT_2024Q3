@@ -5,24 +5,34 @@ import Loader from "../../shared/components/loader/Loader";
 import Main from "../../core/components/main/Main";
 import { Outlet } from "react-router";
 import { useSearchParams } from "react-router-dom";
-import getCardData from "../../shared/utils/getData/getCardData";
+import getCardList from "../../shared/utils/getData/getCardList";
 
 export default function Layout() {
   const [error, setError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const [cardData, setCardData] = useState<CardData[]>([]);
+  console.log("appp -render");
 
-  const makeQuery = useCallback(async (search?: string) => {
-    setIsLoading(true);
-    const data = await getCardData(search);
-    setCardData(data);
-    setIsLoading(false);
-  }, []);
+  const makeQuery = useCallback(
+    async (search: string) => {
+      const page = searchParams.get("page") || "1";
+      setIsLoading(true);
+      const data = await getCardList(page, search);
+      setCardData(data);
+      setIsLoading(false);
+    },
+    [searchParams]
+  );
 
   useEffect(() => {
-    makeQuery();
-  }, [makeQuery]);
+    setSearchParams((params) => {
+      params.set("page", "2");
+      return params;
+    });
+
+    makeQuery("");
+  }, [makeQuery, setSearchParams]);
 
   if (error) {
     throw new Error("The user pressed the red button and broke everything");
@@ -35,16 +45,16 @@ export default function Layout() {
       <button className="error-button" onClick={() => setError(true)}>
         Throw Error
       </button>
-      <button
-        onClick={() =>
-          setSearchParams((params) => {
-            params.set("test", "123123");
-            return params;
-          })
-        }
+      {/* <button
+      onClick={() =>
+        setSearchParams((params) => {
+          params.set("test", "123123");
+          return params;
+        })
+      }
       >
         TEST
-      </button>
+      </button> */}
       <Outlet />
     </>
   );
