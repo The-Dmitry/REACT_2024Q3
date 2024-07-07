@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import Button from "../../../shared/components/button/Button";
 import styles from "./header.module.css";
 // import { LS_KEY } from "../../../shared/hooks/useCardQuery/UseCardQuery";
@@ -7,9 +7,8 @@ type HeaderProps = {
   submit: (value: string) => void;
 };
 
-const Header = ({ submit }: HeaderProps) => {
+const Header = memo(({ submit }: HeaderProps) => {
   const [value, setValue] = useState("");
-  console.log("header render");
   return (
     <header className={styles.header}>
       <input
@@ -21,6 +20,6 @@ const Header = ({ submit }: HeaderProps) => {
       <Button callback={() => submit(value)} text="Search"></Button>
     </header>
   );
-};
+});
 
 export default Header;
