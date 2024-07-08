@@ -25,10 +25,23 @@ export default function UseCardQuery() {
     if (page && page !== `${currentPage}`) {
       setCurrentPage(+page);
       const makeQuery = async () => {
-        setIsLoading(true);
-        const data = await getCardList(page, searchWord);
-        setCardData(data);
-        setIsLoading(false);
+        try {
+          setIsLoading(true);
+          const data = await getCardList(page, searchWord);
+          setCardData(data);
+        } catch {
+          setCardData({
+            count: 0,
+            results: [],
+          });
+          setSearchParams((params) => {
+            params.delete("page");
+            return params;
+          });
+          console.error("Error");
+        } finally {
+          setIsLoading(false);
+        }
       };
       makeQuery();
     }

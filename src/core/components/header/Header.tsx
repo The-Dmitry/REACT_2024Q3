@@ -18,7 +18,7 @@ const Header = memo(({ submit }: HeaderProps) => {
         value={value}
         onInput={(e) => setValue((e.target as HTMLInputElement).value)}
       />
-      <Button callback={() => submit(value)} text="Search"></Button>
+      <Button callback={() => submit(value)}>Search</Button>
     </header>
   );
 });

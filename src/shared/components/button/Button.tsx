@@ -1,14 +1,14 @@
+import { ButtonHTMLAttributes } from "react";
 import styles from "./button.module.css";
 
-type Props = {
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   callback: () => void;
-  text: string;
-};
+}
 
-export default function Button({ callback, text }: Props) {
+export default function Button({ callback, children, ...rest }: Props) {
   return (
-    <button className={styles.button} onClick={callback}>
-      {text}
+    <button className={styles.button} onClick={callback} {...rest}>
+      {children}
     </button>
   );
 }

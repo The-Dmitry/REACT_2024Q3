@@ -7,7 +7,7 @@ export default function Fallback({ reload }: { reload: () => void }) {
       <h2 className={styles.text}>
         Congratulations! You pushed the red button and broke everything.
       </h2>
-      <Button callback={reload} text="Reload" />
+      <Button callback={reload}>Reload</Button>
     </div>
   );
 }

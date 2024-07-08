@@ -11,8 +11,13 @@ export default function Details() {
   const [details, setDetails] = useState<CardData>();
 
   const getData = async (id: string) => {
-    const data = await getDetails(id);
-    setDetails(data);
+    // debugger;
+    try {
+      const data = await getDetails(id);
+      setDetails(data);
+    } catch {
+      setDetails(undefined);
+    }
   };
 
   useEffect(() => {
@@ -36,12 +41,13 @@ export default function Details() {
         <li>Eye color: {details.eye_color}</li>
       </ul>
       <button
-        onClick={() =>
+        onClick={() => {
           setSearchParams((params) => {
             params.delete("details");
             return params;
-          })
-        }
+          });
+          setDetails(undefined);
+        }}
       >
         CLose
       </button>
