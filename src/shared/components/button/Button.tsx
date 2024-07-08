@@ -6,8 +6,12 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export default function Button({ callback, children, ...rest }: Props) {
+  const handler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.stopPropagation();
+    callback();
+  };
   return (
-    <button className={styles.button} onClick={callback} {...rest}>
+    <button className={styles.button} onClick={handler} {...rest}>
       {children}
     </button>
   );

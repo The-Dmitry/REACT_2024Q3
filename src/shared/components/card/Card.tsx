@@ -7,7 +7,8 @@ export default function Card({ name, url }: CardData) {
   const setSearchParams = useSearchParams()[1];
   const id = url.replace(/[^\d]/g, "");
 
-  const openDetails = () => {
+  const openDetails = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+    e.stopPropagation();
     setSearchParams((params) => {
       params.set("details", id);
       return params;
