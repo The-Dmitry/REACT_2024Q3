@@ -48,7 +48,7 @@ export default function UseCardQuery() {
     if (!page) {
       setPageNumber(1);
     }
-  }, [setPageNumber, searchParams, searchWord, currentPage]);
+  }, [setPageNumber, searchParams, searchWord, currentPage, setSearchParams]);
 
   const setNewSearchWord = useCallback(
     (text: string) => {
