@@ -1,10 +1,10 @@
-import styles from "./button.module.css";
-import { Component, ReactNode } from "react";
+import styles from './button.module.css'
+import { Component, ReactNode } from 'react'
 
 type Props = {
-  callback: () => void;
-  text: string;
-};
+  callback: () => void
+  text: string
+}
 
 export default class Button extends Component<Props> {
   render(): ReactNode {
@@ -12,6 +12,6 @@ export default class Button extends Component<Props> {
       <button className={styles.button} onClick={this.props.callback}>
         {this.props.text}
       </button>
-    );
+    )
   }
 }

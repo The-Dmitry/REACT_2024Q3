@@ -1,11 +1,11 @@
-import styles from "./main.module.css";
-import { Component, ReactNode } from "react";
-import CardData from "../../../models/CardData";
-import Card from "../../../shared/components/card/Card";
+import styles from './main.module.css'
+import { Component, ReactNode } from 'react'
+import CardData from '../../../models/CardData'
+import Card from '../../../shared/components/card/Card'
 
 type MainProps = {
-  data: CardData[];
-};
+  data: CardData[]
+}
 
 export default class Main extends Component<MainProps> {
   render(): ReactNode {
@@ -22,6 +22,6 @@ export default class Main extends Component<MainProps> {
           <h2 className={styles.placeholder}>Nothing Found</h2>
         )}
       </main>
-    );
+    )
   }
 }

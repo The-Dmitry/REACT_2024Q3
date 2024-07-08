@@ -1,25 +1,25 @@
-import { Component, ErrorInfo, ReactNode } from "react";
-import Fallback from "../fallback/Fallback";
+import { Component, ErrorInfo, ReactNode } from 'react'
+import Fallback from '../fallback/Fallback'
 
 type Props = {
-  children: ReactNode | ReactNode[];
-};
+  children: ReactNode | ReactNode[]
+}
 
 type State = {
-  error: boolean;
-};
+  error: boolean
+}
 
 export default class ErrorBoundary extends Component<Props, State> {
   state = {
     error: false,
-  };
+  }
 
   static getDerivedStateFromError() {
-    return { error: true };
+    return { error: true }
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
-    console.log(error, errorInfo);
+    console.log(error, errorInfo)
   }
 
   render(): ReactNode {
@@ -30,6 +30,6 @@ export default class ErrorBoundary extends Component<Props, State> {
         )}
         {!this.state.error && this.props.children}
       </>
-    );
+    )
   }
 }

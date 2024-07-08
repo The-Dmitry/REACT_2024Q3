@@ -1,10 +1,10 @@
-import Button from "../../../shared/components/button/Button";
-import styles from "./fallback.module.css";
-import { Component, ReactNode } from "react";
+import Button from '../../../shared/components/button/Button'
+import styles from './fallback.module.css'
+import { Component, ReactNode } from 'react'
 
 type Props = {
-  reload: () => void;
-};
+  reload: () => void
+}
 
 export default class Fallback extends Component<Props> {
   render(): ReactNode {
@@ -15,6 +15,6 @@ export default class Fallback extends Component<Props> {
         </h2>
         <Button callback={this.props.reload} text="Reload" />
       </div>
-    );
+    )
   }
 }
