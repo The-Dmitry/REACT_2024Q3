@@ -1,0 +1,20 @@
+.main {
+  display: grid;
+  width: min(1000px, 100%);
+  margin-inline: auto;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  align-content: start;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.placeholder {
+  justify-self: center;
+  align-self: center;
+}
