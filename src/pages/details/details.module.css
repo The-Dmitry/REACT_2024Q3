@@ -1,6 +1,8 @@
 .details {
+  position: relative;
   padding: 10px;
   width: max(20%, 300px);
+  max-height: 100dvh;
 }
 
 .image {
