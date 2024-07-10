@@ -8,7 +8,7 @@ export default function Fallback({ reload }: { reload: () => void }) {
     <div className={styles.fallback}>
       <h2 className={styles.text}>Oops, Something went wrong!</h2>
       <Button
-        callback={() => {
+        onClick={() => {
           resetAllParameters()
           reload()
         }}

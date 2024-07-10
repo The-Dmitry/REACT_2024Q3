@@ -13,9 +13,7 @@ export default function Details() {
   return (
     <>
       <div className={styles.details}>
-        <button onClick={clearParams} className="">
-          CLose
-        </button>
+        <button onClick={clearParams} className={styles.close} title="Close" />
         {isLoading && <Loader />}
         {details && (
           <>
@@ -39,7 +37,9 @@ export default function Details() {
             ) : null}
           </>
         )}
-        {!details && <h3>Nothing found</h3>}
+        {!details && !isLoading && (
+          <h3 className={styles.empty}>Nothing found.</h3>
+        )}
       </div>
     </>
   )

@@ -4,7 +4,7 @@ import UseQueryParams from './useQueryParams'
 import { ApiResponse } from '../../models/ApiResponse'
 
 export default function UseCardQuery() {
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
   const [cardData, setCardData] = useState<ApiResponse>()
   const [searchWord, setSearchWord] = useState('')
   const { page, setParams } = UseQueryParams('page')

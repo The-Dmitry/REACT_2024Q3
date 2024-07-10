@@ -1,5 +1,6 @@
 import styles from './pagination.module.css'
 import UseQueryParams from '../../../shared/hooks/useQueryParams'
+import Button from '../../../shared/components/button/Button'
 
 export default function Pagination({ totalCount }: { totalCount: number }) {
   const pageCount = Math.ceil(totalCount / 10)
@@ -8,14 +9,14 @@ export default function Pagination({ totalCount }: { totalCount: number }) {
   return (
     <div className={styles.pagination}>
       {new Array(pageCount).fill(0).map((_, i) => (
-        <button
+        <Button
           key={i}
-          className={styles.button}
           disabled={!!(page && i + 1 === +page)}
           onClick={() => setParams(`${i + 1}`)}
+          style={{ minWidth: 'fit-content' }}
         >
           {i + 1}
-        </button>
+        </Button>
       ))}
     </div>
   )
