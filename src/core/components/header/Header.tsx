@@ -1,14 +1,14 @@
-import { memo } from "react";
-import Button from "../../../shared/components/button/Button";
-import styles from "./header.module.css";
-import UseSaveQuery from "../../../shared/hooks/useSaveQuery";
+import { memo } from 'react'
+import Button from '../../../shared/components/button/Button'
+import styles from './header.module.css'
+import UseSaveQuery from '../../../shared/hooks/useSaveQuery'
 
 type HeaderProps = {
-  submit: (value: string) => void;
-};
+  submit: (value: string) => void
+}
 
 const Header = memo(({ submit }: HeaderProps) => {
-  const [value, setValue] = UseSaveQuery();
+  const [value, setValue] = UseSaveQuery()
 
   return (
     <header className={styles.header}>
@@ -20,7 +20,7 @@ const Header = memo(({ submit }: HeaderProps) => {
       />
       <Button callback={() => submit(value)}>Search</Button>
     </header>
-  );
-});
+  )
+})
 
-export default Header;
+export default Header

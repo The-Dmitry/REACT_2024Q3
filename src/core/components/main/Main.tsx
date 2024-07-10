@@ -1,37 +1,29 @@
-import styles from "./main.module.css";
-import CardData from "../../../models/CardData";
-import Card from "../../../shared/components/card/Card";
-import RestoreParameters from "../../../shared/components/restore-parameters/RestoreParameters";
-import { useSearchParams } from "react-router-dom";
+import styles from './main.module.css'
+import Card from '../../../shared/components/card/Card'
+import RestoreParameters from '../../../shared/components/restore-parameters/RestoreParameters'
+import Pagination from '../pagination/Pagination'
+import { ApiResponse } from '../../../models/ApiResponse'
+import UseQueryParams from '../../../shared/hooks/useQueryParams'
 
 type MainProps = {
-  data: CardData[];
-};
+  data?: ApiResponse
+}
 
 export default function Main({ data }: MainProps) {
-  const setSearch = useSearchParams()[1];
-
-  const closeDetails = () => {
-    setSearch((params) => {
-      params.delete("details");
-      return params;
-    });
-  };
+  const { clearParams } = UseQueryParams('details')
   return (
-    <main className={styles.main} onClick={closeDetails}>
-      {data && !!data.length && (
-        <ul className={styles.list}>
-          {data.map((info) => (
-            <Card key={info.name} {...info} />
-          ))}
-        </ul>
-      )}
-      {(!data || !data.length) && (
+    <main className={styles.main}>
+      {data && !!data.results.length && (
         <>
-          <h2 className={styles.placeholder}>Nothing Found</h2>
-          <RestoreParameters />
+          <ul className={styles.list} onClick={clearParams}>
+            {data.results.map((info) => (
+              <Card key={info.name} {...info} />
+            ))}
+          </ul>
+          <Pagination totalCount={data.count || 0}></Pagination>
         </>
       )}
+      {(!data || !data.results.length) && <RestoreParameters />}
     </main>
-  );
+  )
 }

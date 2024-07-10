@@ -1,20 +1,12 @@
 import { useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
 import getDetails from '../utils/getDetails/getDetails'
 import CardData from '../../models/CardData'
+import UseQueryParams from './useQueryParams'
 
 export default function UseCardDetails() {
-  const [searchParams, setSearchParams] = useSearchParams()
-  const [details, setDetails] = useState<CardData>()
+  const { id, clearParams } = UseQueryParams('details')
   const [isLoading, setIsLoading] = useState<boolean>(true)
-  const id = searchParams.get('details')
-
-  const clearParams = () => {
-    setSearchParams((params) => {
-      params.delete('details')
-      return params
-    })
-  }
+  const [details, setDetails] = useState<CardData>()
 
   const getData = async (id: string) => {
     try {

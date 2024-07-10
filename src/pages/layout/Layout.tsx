@@ -1,37 +1,23 @@
-import styles from "./layout.module.css";
-import { useState } from "react";
-import Header from "../../core/components/header/Header";
-import Loader from "../../shared/components/loader/Loader";
-import Main from "../../core/components/main/Main";
-import { Outlet } from "react-router";
-import Pagination from "../../core/components/pagination/Pagination";
-import UseCardQuery from "../../shared/hooks/useCardQuery";
+import styles from './layout.module.css'
+import Header from '../../core/components/header/Header'
+import Loader from '../../shared/components/loader/Loader'
+import Main from '../../core/components/main/Main'
+import { Outlet } from 'react-router'
+import UseCardQuery from '../../shared/hooks/useCardQuery'
 
 export default function Layout() {
-  const [error, setError] = useState<boolean>(false);
-  const { cardData, isLoading, setNewSearchWord } = UseCardQuery();
-
-  if (error) {
-    throw new Error("The user pressed the red button and broke everything");
-  }
+  const { cardData, isLoading, setNewSearchWord } = UseCardQuery()
 
   return (
     <>
       <Header submit={setNewSearchWord} />
       <div className={styles.container}>
-        <section className={styles.list}>
-          {isLoading ? (
-            <Loader />
-          ) : (
-            cardData && <Main data={cardData.results} />
-          )}
-          <Pagination totalCount={cardData?.count || 0}></Pagination>
-        </section>
+        <div className={styles.wrapper}>
+          {isLoading && <Loader />}
+          {!isLoading && <Main data={cardData} />}
+        </div>
         <Outlet />
       </div>
-      <button className="error-button" onClick={() => setError(true)}>
-        Throw Error
-      </button>
     </>
-  );
+  )
 }

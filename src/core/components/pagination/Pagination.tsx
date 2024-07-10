@@ -1,10 +1,9 @@
-import { useSearchParams } from "react-router-dom";
-import styles from "./pagination.module.css";
+import styles from './pagination.module.css'
+import UseQueryParams from '../../../shared/hooks/useQueryParams'
 
 export default function Pagination({ totalCount }: { totalCount: number }) {
-  const pageCount = Math.ceil(totalCount / 10);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const currentPage = searchParams.get("page");
+  const pageCount = Math.ceil(totalCount / 10)
+  const { setParams, page } = UseQueryParams('page')
 
   return (
     <div className={styles.pagination}>
@@ -12,17 +11,12 @@ export default function Pagination({ totalCount }: { totalCount: number }) {
         <button
           key={i}
           className={styles.button}
-          disabled={!!(currentPage && i + 1 === +currentPage)}
-          onClick={() =>
-            setSearchParams((params) => {
-              params.set("page", `${i + 1}`);
-              return params;
-            })
-          }
+          disabled={!!(page && i + 1 === +page)}
+          onClick={() => setParams(`${i + 1}`)}
         >
           {i + 1}
         </button>
       ))}
     </div>
-  );
+  )
 }

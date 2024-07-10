@@ -13,26 +13,33 @@ export default function Details() {
   return (
     <>
       <div className={styles.details}>
+        <button onClick={clearParams} className="">
+          CLose
+        </button>
         {isLoading && <Loader />}
-        {details ? (
+        {details && (
           <>
-            <img
-              className={styles.image}
-              src={getImageSrc(details.url)}
-              alt=""
-            />
-            <h2 className={styles.name}>{details.name}</h2>
-            <ul className={styles.list}>
-              <li>Birth year: {details.birth_year}</li>
-              <li>Gender: {details.gender}</li>
-              <li>Height: {details.height}</li>
-              <li>Hair color: {details.hair_color}</li>
-              <li>Skin color: {details.skin_color}</li>
-              <li>Eye color: {details.eye_color}</li>
-            </ul>
-            <button onClick={clearParams}>CLose</button>{' '}
+            {details ? (
+              <>
+                <img
+                  className={styles.image}
+                  src={getImageSrc(details.url)}
+                  alt={details.name}
+                />
+                <h2 className={styles.name}>{details.name}</h2>
+                <ul className={styles.list}>
+                  <li>Birth year: {details.birth_year}</li>
+                  <li>Gender: {details.gender}</li>
+                  <li>Height: {details.height}</li>
+                  <li>Hair color: {details.hair_color}</li>
+                  <li>Skin color: {details.skin_color}</li>
+                  <li>Eye color: {details.eye_color}</li>
+                </ul>
+              </>
+            ) : null}
           </>
-        ) : null}
+        )}
+        {!details && <h3>Nothing found</h3>}
       </div>
     </>
   )
