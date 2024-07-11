@@ -1,19 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from 'react'
 
-const LS_KEY = "MY_COOL_UNIQ_KEY";
+const LS_KEY = 'MY_COOL_UNIQ_KEY'
 
 export default function UseSaveQuery(): [
   string,
   React.Dispatch<React.SetStateAction<string>>,
 ] {
-  const [value, setValue] = useState(localStorage[LS_KEY] || "");
+  const [value, setValue] = useState<string>(localStorage[LS_KEY] || '')
+  const valueToSave = useRef(value)
 
   useEffect(() => {
-    const saveValueToLs = () => {
-      localStorage.setItem(LS_KEY, value);
-    };
-    return () => saveValueToLs();
-  }, [value]);
+    valueToSave.current = value
+  }, [value])
 
-  return [value, setValue];
+  useEffect(() => {
+    const saveValue = (ref: React.MutableRefObject<string>) => {
+      localStorage.setItem(LS_KEY, ref.current)
+    }
+    return () => saveValue(valueToSave)
+  })
+
+  return [value, setValue]
 }

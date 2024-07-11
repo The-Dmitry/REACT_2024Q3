@@ -8,7 +8,7 @@ export default function RestoreParameters() {
   return (
     <div className={styles.empty}>
       <h2 className={styles.placeholder}>Nothing Found</h2>
-      <Button onClick={resetAllParameters}>Restore parameters</Button>
+      <Button onClick={resetAllParameters}>Reset parameters</Button>
     </div>
   )
 }

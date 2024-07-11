@@ -1,5 +1,6 @@
 import { useSearchParams } from 'react-router-dom'
 import { SearchParams } from '../../models/SearchParams'
+import { useCallback, useEffect } from 'react'
 
 const UseQueryParams = (name: SearchParams) => {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -8,12 +9,15 @@ const UseQueryParams = (name: SearchParams) => {
 
   const id = searchParams.get('details')
 
-  const setParams = (value: string, key = name) => {
-    setSearchParams((params) => {
-      params.set(key, value)
-      return params
-    })
-  }
+  const setParams = useCallback(
+    (value: string, key = name) => {
+      setSearchParams((params) => {
+        params.set(key, value)
+        return params
+      })
+    },
+    [name, setSearchParams]
+  )
 
   const clearParams = () => {
     setSearchParams((params) => {
@@ -30,9 +34,11 @@ const UseQueryParams = (name: SearchParams) => {
     setParams('1', 'page')
   }
 
-  if (!page) {
-    setParams('1', 'page')
-  }
+  useEffect(() => {
+    if (!page) {
+      setParams('1', 'page')
+    }
+  }, [page, setParams])
 
   return { setParams, clearParams, page, id, resetAllParameters }
 }
