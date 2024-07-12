@@ -1,14 +1,14 @@
-import { memo } from 'react'
+import { memo, useState } from 'react'
 import Button from '../../../shared/components/button/Button'
 import styles from './header.module.css'
-import UseSaveQuery from '../../../shared/hooks/useSaveQuery'
 
 type HeaderProps = {
   submit: (value: string) => void
+  getValueFromLS: () => string
 }
 
-const Header = memo(({ submit }: HeaderProps) => {
-  const [value, setValue] = UseSaveQuery()
+const Header = memo(({ submit, getValueFromLS }: HeaderProps) => {
+  const [value, setValue] = useState(getValueFromLS())
 
   return (
     <header className={styles.header}>

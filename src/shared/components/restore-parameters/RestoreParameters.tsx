@@ -7,7 +7,9 @@ export default function RestoreParameters() {
 
   return (
     <div className={styles.empty}>
-      <h2 className={styles.placeholder}>Nothing Found</h2>
+      <h2 className={styles.placeholder}>
+        Nothing Found. Change the search term or reset parameters.
+      </h2>
       <Button onClick={resetAllParameters}>Reset parameters</Button>
     </div>
   )

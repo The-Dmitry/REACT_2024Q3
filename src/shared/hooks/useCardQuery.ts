@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import getCardList from '../utils/getData/getCardList'
 import UseQueryParams from './useQueryParams'
 import { ApiResponse } from '../../models/ApiResponse'
+import UseWordStorage from './useSaveQuery'
 
 export default function UseCardQuery() {
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [cardData, setCardData] = useState<ApiResponse>()
-  const [searchWord, setSearchWord] = useState('')
+  const [searchWord, setSearchWord, getValueFromLS] = UseWordStorage()
   const { page, setParams } = UseQueryParams('page')
 
   useEffect(() => {
@@ -29,10 +30,13 @@ export default function UseCardQuery() {
     }
   }, [page, searchWord])
 
-  const setNewSearchWord = (text: string) => {
-    setSearchWord(text)
-    setParams('1')
-  }
+  const setNewSearchWord = useCallback(
+    (text: string) => {
+      setSearchWord(text)
+      setParams('1')
+    },
+    [setParams, setSearchWord]
+  )
 
-  return { isLoading, cardData, setNewSearchWord }
+  return { isLoading, cardData, setNewSearchWord, getValueFromLS }
 }
