@@ -7,7 +7,7 @@ export default function Pagination({ totalCount }: { totalCount: number }) {
   const { setParams, page } = UseQueryParams('page')
 
   return (
-    <div className={styles.pagination}>
+    <div className={styles.pagination} data-testid="pagination">
       {new Array(pageCount).fill(0).map((_, i) => (
         <Button
           key={i}

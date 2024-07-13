@@ -14,7 +14,7 @@ const Header = memo(({ submit, getValueFromLS }: HeaderProps) => {
     <header className={styles.header}>
       <input
         className={styles.input}
-        type="text"
+        type="search"
         value={value}
         onInput={(e) => setValue((e.target as HTMLInputElement).value)}
       />
