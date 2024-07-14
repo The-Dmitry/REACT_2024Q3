@@ -5,7 +5,7 @@ import { render, screen } from '@testing-library/react'
 import { cards } from '../../mocks/mockedData/cards'
 
 describe('Details component', () => {
-  it.only('Component opens if search param "details=" exists', () => {
+  it('Component opens if search param "details=" exists', () => {
     const router = createMemoryRouter(routes, {
       initialEntries: ['?page=1&details=1'],
     })
@@ -14,7 +14,7 @@ describe('Details component', () => {
     const details = screen.getByTestId('details')
     expect(details).toBeInTheDocument()
   })
-  it.only('The component displays data', async () => {
+  it('The component displays data', async () => {
     const router = createMemoryRouter(routes, {
       initialEntries: ['?details=4'],
     })
