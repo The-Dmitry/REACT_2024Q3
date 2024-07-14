@@ -1,0 +1,20 @@
+.header {
+  display: grid;
+  grid-template-columns: 1fr minmax(200px, 1fr) 80px 1fr;
+  gap: 5px;
+  align-items: center;
+  background-color: blue;
+  -webkit-box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
+
+.input {
+  height: 37px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  grid-column: 2 / 3;
+  font-size: 1.2rem;
+  padding-left: 10px;
+}
