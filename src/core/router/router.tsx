@@ -1,10 +1,10 @@
-import { createBrowserRouter } from "react-router-dom";
-import { Details, Layout, NotFound } from "../../pages";
-import ErrorBoundary from "../components/error-boundary/ErrorBoundary";
+import { createBrowserRouter } from 'react-router-dom'
+import { Details, Layout, NotFound } from '../../pages'
+import ErrorBoundary from '../components/error-boundary/ErrorBoundary'
 
-const router = createBrowserRouter([
+export const routes = [
   {
-    path: "/",
+    path: '/',
     element: (
       <ErrorBoundary>
         <Layout />
@@ -12,15 +12,17 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "/",
+        path: '/',
         element: <Details />,
       },
     ],
   },
   {
-    path: "*",
+    path: '*',
     element: <NotFound />,
   },
-]);
+]
 
-export default router;
+const router = createBrowserRouter(routes)
+
+export default router

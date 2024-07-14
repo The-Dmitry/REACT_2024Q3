@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">10% </span>
+                <span class="strong">35% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>4/40</span>
+                <span class='fraction'>14/40</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">20% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>1/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">10% </span>
+                <span class="strong">35% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/40</span>
+                <span class='fraction'>14/40</span>
             </div>
         
             
@@ -114,19 +114,19 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -148,31 +148,31 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import styles from './details.module.css'
 import getImageSrc from '../../shared/utils/getImageSrc/getImageSrc'
 import UseCardDetails from '../../shared/hooks/useCardDetails'
 import Loader from '../../shared/components/loader/Loader'
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >export default function Details() {</span></span>
-<span class="cstat-no" title="statement not covered" >  const { id, details, clearParams, isLoading } = UseCardDetails()</span>
+export default function Details() {
+  const { id, details, clearParams, isLoading } = UseCardDetails()
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (!id) {</span>
-<span class="cstat-no" title="statement not covered" >    return null</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
+  if (!id) {
+    return null
+<span class="branch-0 cbranch-no" title="branch not covered" >  }</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  return (</span>
 <span class="cstat-no" title="statement not covered" >    &lt;&gt;</span>
 <span class="cstat-no" title="statement not covered" >      &lt;div className={styles.details}&gt;</span>
 <span class="cstat-no" title="statement not covered" >        &lt;button onClick={clearParams} className={styles.close} title="Close" /&gt;</span>
 <span class="cstat-no" title="statement not covered" >        {isLoading &amp;&amp; &lt;Loader /&gt;}</span>
-<span class="cstat-no" title="statement not covered" >        {details &amp;&amp; (</span>
+        {<span class="branch-0 cbranch-no" title="branch not covered" >details &amp;&amp; (</span>
 <span class="cstat-no" title="statement not covered" >          &lt;&gt;</span>
 <span class="cstat-no" title="statement not covered" >            {details ? (</span>
 <span class="cstat-no" title="statement not covered" >              &lt;&gt;</span>
@@ -194,13 +194,13 @@ import Loader from '../../shared/components/loader/Loader'
 <span class="cstat-no" title="statement not covered" >            ) : null}</span>
 <span class="cstat-no" title="statement not covered" >          &lt;/&gt;</span>
         )}
-<span class="cstat-no" title="statement not covered" >        {!details &amp;&amp; !isLoading &amp;&amp; (</span>
+        {!<span class="branch-0 cbranch-no" title="branch not covered" >details &amp;&amp; !<span class="branch-0 cbranch-no" title="branch not covered" >isLoading &amp;&amp; (</span></span>
 <span class="cstat-no" title="statement not covered" >          &lt;h3 className={styles.empty}&gt;Nothing found.&lt;/h3&gt;</span>
         )}
-<span class="cstat-no" title="statement not covered" >      &lt;/div&gt;</span>
-<span class="cstat-no" title="statement not covered" >    &lt;/&gt;</span>
+      &lt;/div&gt;
+    &lt;/&gt;
   )
-<span class="cstat-no" title="statement not covered" >}</span>
+}
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -208,7 +208,7 @@ import Loader from '../../shared/components/loader/Loader'
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-07-13T22:37:06.729Z
+                at 2024-07-14T13:45:10.993Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
