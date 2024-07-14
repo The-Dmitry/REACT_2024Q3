@@ -12,7 +12,7 @@ export default function Details() {
 
   return (
     <>
-      <div className={styles.details}>
+      <div className={styles.details} data-testid="details">
         <button onClick={clearParams} className={styles.close} title="Close" />
         {isLoading && <Loader />}
         {details && (
