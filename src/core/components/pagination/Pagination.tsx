@@ -1,18 +1,22 @@
 import styles from './pagination.module.css'
 import UseQueryParams from '../../../shared/hooks/useQueryParams'
 import Button from '../../../shared/components/button/Button'
+import { useAppSelector } from '../../../shared/hooks/storeHooks'
+import { useGetListQuery } from '../../../redux/api/swApi'
 
-export default function Pagination({ totalCount }: { totalCount: number }) {
-  const pageCount = Math.ceil(totalCount / 10)
-  const { setParams, page } = UseQueryParams('page')
+export default function Pagination() {
+  const { setParams, page } = UseQueryParams()
+  const { search } = useAppSelector((state) => state.searchWord)
+  const { data } = useGetListQuery({ search, page })
+  const pageCount = new Array(Math.ceil((data?.count || 10) / 10)).fill(0)
 
   return (
     <div className={styles.pagination} data-testid="pagination">
-      {new Array(pageCount).fill(0).map((_, i) => (
+      {pageCount.map((_, i) => (
         <Button
           key={i}
           disabled={!!(page && i + 1 === +page)}
-          onClick={() => setParams(`${i + 1}`)}
+          onClick={() => setParams(`${i + 1}`, 'page')}
           style={{ minWidth: 'fit-content' }}
         >
           {i + 1}

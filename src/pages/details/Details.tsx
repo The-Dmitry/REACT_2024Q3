@@ -1,10 +1,12 @@
 import styles from './details.module.css'
 import getImageSrc from '../../shared/utils/getImageSrc/getImageSrc'
-import UseCardDetails from '../../shared/hooks/useCardDetails'
 import Loader from '../../shared/components/loader/Loader'
+import { useGetDetailsQuery } from '../../redux/api/swApi'
+import UseQueryParams from '../../shared/hooks/useQueryParams'
 
 export default function Details() {
-  const { id, details, clearParams, isLoading } = UseCardDetails()
+  const { clearParams, id } = UseQueryParams()
+  const { isFetching, data, error } = useGetDetailsQuery(id)
 
   if (!id) {
     return null
@@ -13,32 +15,35 @@ export default function Details() {
   return (
     <>
       <div className={styles.details} data-testid="details">
-        <button onClick={clearParams} className={styles.close} title="Close" />
-        {isLoading && <Loader />}
-        {details && (
+        <button
+          onClick={() => clearParams('details')}
+          className={styles.close}
+          title="Close"
+        />
+        {error && <h3 className={styles.empty}>Nothing found.</h3>}
+        {isFetching ? (
+          <Loader />
+        ) : (
           <>
-            {details ? (
+            {data && (
               <>
                 <img
                   className={styles.image}
-                  src={getImageSrc(details.url)}
-                  alt={details.name}
+                  src={getImageSrc(data.url)}
+                  alt={data.name}
                 />
-                <h2 className={styles.name}>{details.name}</h2>
+                <h2 className={styles.name}>{data.name}</h2>
                 <ul className={styles.list}>
-                  <li>Birth year: {details.birth_year}</li>
-                  <li>Gender: {details.gender}</li>
-                  <li>Height: {details.height}</li>
-                  <li>Hair color: {details.hair_color}</li>
-                  <li>Skin color: {details.skin_color}</li>
-                  <li>Eye color: {details.eye_color}</li>
+                  <li>Birth year: {data.birth_year}</li>
+                  <li>Gender: {data.gender}</li>
+                  <li>Height: {data.height}</li>
+                  <li>Hair color: {data.hair_color}</li>
+                  <li>Skin color: {data.skin_color}</li>
+                  <li>Eye color: {data.eye_color}</li>
                 </ul>
               </>
-            ) : null}
+            )}
           </>
-        )}
-        {!details && !isLoading && (
-          <h3 className={styles.empty}>Nothing found.</h3>
         )}
       </div>
     </>
