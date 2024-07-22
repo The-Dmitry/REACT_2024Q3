@@ -2,6 +2,7 @@ import styles from './layout.module.css'
 import Header from '../../core/components/header/Header'
 import Main from '../../core/components/main/Main'
 import { Outlet } from 'react-router'
+import FavoriteControl from '../../core/components/favorite-control/FavoriteControl'
 
 export default function Layout() {
   return (
@@ -13,6 +14,7 @@ export default function Layout() {
         </div>
         <Outlet />
       </div>
+      <FavoriteControl />
     </>
   )
 }
