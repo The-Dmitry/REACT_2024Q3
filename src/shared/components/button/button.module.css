@@ -31,3 +31,11 @@
 .button:active {
   top: 1px;
 }
+
+.warning {
+  background: #f42d1f;
+}
+
+.warning:hover {
+  background-color: #ff4a4a;
+}

@@ -23,7 +23,9 @@ const Header = () => {
         value={value}
         onInput={(e) => setValue((e.target as HTMLInputElement).value)}
       />
-      <Button onClick={setNewSearch}>Search</Button>
+      <Button warning={false} onClick={setNewSearch}>
+        Search
+      </Button>
     </header>
   )
 }
