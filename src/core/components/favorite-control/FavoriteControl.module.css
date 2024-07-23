@@ -3,7 +3,7 @@
   bottom: 10px;
   right: 10px;
   width: min(200px, 100%);
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.815);
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 10px;

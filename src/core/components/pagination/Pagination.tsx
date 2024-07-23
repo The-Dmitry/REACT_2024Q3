@@ -8,12 +8,20 @@ export default function Pagination() {
   const { setParams, page } = UseQueryParams()
   const { search } = useAppSelector((state) => state.searchWord)
   const { data } = useGetListQuery({ search, page })
-  const pageCount = new Array(Math.ceil((data?.count || 10) / 10)).fill(0)
+
+  if (data && data?.count < 10) {
+    return null
+  }
+
+  const pageCount: number[] = new Array(
+    Math.ceil((data?.count || 10) / 10)
+  ).fill(0)
 
   return (
     <div className={styles.pagination} data-testid="pagination">
       {pageCount.map((_, i) => (
         <Button
+          warning={false}
           key={i}
           disabled={!!(page && i + 1 === +page)}
           onClick={() => setParams(`${i + 1}`, 'page')}

@@ -2,9 +2,9 @@ import styles from './card.module.css'
 import CardData from '../../../models/CardData'
 import { useSearchParams } from 'react-router-dom'
 import getImageSrc from '../../utils/getImageSrc/getImageSrc'
-import Checkbox from '../checkbox/Checkbox'
 import { useAppDispatch, useAppSelector } from '../../hooks/storeHooks'
 import { handleFavorites } from '../../../redux/slice/favorite-slice'
+import CardCheckbox from '../card-checkbox/CardCheckbox'
 
 export default function Card(card: CardData) {
   const setSearchParams = useSearchParams()[1]
@@ -20,13 +20,11 @@ export default function Card(card: CardData) {
     })
   }
 
-  const handleChange = () => {
-    dispatch(handleFavorites(card))
-  }
+  const handleChange = () => dispatch(handleFavorites(card))
 
   return (
     <li className={styles.card} onClick={openDetails} data-testid="card">
-      <Checkbox
+      <CardCheckbox
         isChecked={card.name in favoriteCards}
         handleChange={handleChange}
       />

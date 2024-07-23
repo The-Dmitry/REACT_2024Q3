@@ -1,10 +1,11 @@
 .wrapper {
   flex: 1 1 auto;
   display: flex;
+  margin: 0 auto;
 }
 
 .container {
-  display: flex;
   width: min(1300px, 100%);
-  margin: 0 auto;
+  margin-inline: auto;
+  display: flex;
 }

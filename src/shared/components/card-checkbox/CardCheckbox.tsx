@@ -1,11 +1,11 @@
-import styles from './Checkbox.module.css'
+import styles from './CardCheckbox.module.css'
 
 interface Props {
   isChecked: boolean
   handleChange: () => void
 }
 
-export default function Checkbox({ isChecked, handleChange }: Props) {
+export default function CardCheckbox({ isChecked, handleChange }: Props) {
   return (
     <label className={styles.container} onClick={(e) => e.stopPropagation()}>
       <input
