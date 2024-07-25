@@ -9,7 +9,7 @@ export default function Pagination() {
   const { search } = useAppSelector((state) => state.searchWord)
   const { data } = useGetListQuery({ search, page })
 
-  if (data && data?.count < 10) {
+  if (!data || data?.count < 10) {
     return null
   }
 

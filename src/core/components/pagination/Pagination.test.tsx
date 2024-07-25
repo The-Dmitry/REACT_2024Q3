@@ -1,29 +1,31 @@
-// import { fireEvent, render, screen } from '@testing-library/react'
-// import { createMemoryRouter } from 'react-router'
-import { describe, expect, it } from 'vitest'
-// import Pagination from './Pagination'
-// import { RouterProvider } from 'react-router-dom'
+import { fireEvent, render, screen } from '@testing-library/react'
+import { createMemoryRouter, RouterProvider } from 'react-router'
+import { describe, it, expect } from 'vitest'
+import Pagination from './Pagination'
 
-describe('Pagination', () => {
-  // it('Pagination updates URL query parameter when page changes', () => {
-  //   const routes = [
-  //     {
-  //       path: '/',
-  //       element: <Pagination />,
-  //     },
-  //   ]
-  //   const router = createMemoryRouter(routes)
+import { Provider } from 'react-redux'
+import { store } from '../../../redux/store'
 
-  //   render(<RouterProvider router={router} />)
-  //   const [pagination] = screen.getAllByTestId('pagination')
-  //   expect(pagination).toBeInTheDocument()
+describe('Pagination', async () => {
+  it('Pagination updates URL query parameter when page changes', async () => {
+    const routes = [
+      {
+        path: '/',
+        element: (
+          <Provider store={store}>
+            <Pagination />
+          </Provider>
+        ),
+      },
+    ]
+    const router = createMemoryRouter(routes)
+    render(<RouterProvider router={router} />)
+    const pagination = await screen.findByTestId('pagination')
 
-  //   fireEvent.click(pagination.children[2])
-  //   expect(router.state.location.search).toBe('?page=3')
-  //   fireEvent.click(pagination.children[0])
-  //   expect(router.state.location.search).toBe('?page=1')
-  // })
-  it('ToDo', () => {
-    expect(true).toBeTruthy()
+    expect(pagination).toBeInTheDocument()
+    fireEvent.click(pagination.children[1])
+    expect(router.state.location.search).toBe('?page=2')
+    fireEvent.click(pagination.children[0])
+    expect(router.state.location.search).toBe('?page=1')
   })
 })

@@ -1,47 +1,40 @@
-import { describe, expect, it } from 'vitest'
-// import { render, fireEvent, screen } from '@testing-library/react'
-// import { Layout } from '../../../pages'
-// import { MemoryRouter } from 'react-router-dom'
-// import { LS_KEY } from '../../../shared/hooks/useSaveQuery'
-// import Header from './Header'
+import { describe, expect, it, vi } from 'vitest'
+import { render, fireEvent, screen } from '@testing-library/react'
+import { MemoryRouter } from 'react-router-dom'
+import Header from './Header'
 
-describe('Header', () => {
-  // const initialValue = 'Search test'
-  // beforeEach(() => {
-  //   localStorage.setItem(LS_KEY, initialValue)
-  // })
+import ThemeProvider from '../theme-provider/ThemeProvider'
+import { Provider } from 'react-redux'
+import * as storeHooks from '../../../shared/hooks/storeHooks'
+import { store } from '../../../redux/store'
 
-  // it('Search calls the prop callback to get the initial value from LS', () => {
-  //   const initialSpy = vi.fn()
-  //   render(<Header getValueFromLS={initialSpy} submit={vi.fn()}></Header>)
-  //   expect(initialSpy).toHaveBeenCalled()
-  // })
-
-  // it('Search button saves the entered value to the local storage', () => {
-  //   render(
-  //     <MemoryRouter>
-  //       <Layout />
-  //     </MemoryRouter>
-  //   )
-  //   const testQuery = 'test query'
-  //   const button = screen.getByText('Search')
-  //   const input = screen.getByRole('searchbox')
-  //   fireEvent.input(input, { target: { value: testQuery } })
-  //   fireEvent.click(button)
-  //   expect(localStorage.getItem(LS_KEY)).toBe(testQuery)
-  // })
-
-  // it('Search retrieves correct value from the local storage upon mounting', () => {
-  //   render(
-  //     <MemoryRouter>
-  //       <Layout />
-  //     </MemoryRouter>
-  //   )
-  //   const input = screen.getByRole('searchbox')
-  //   expect(input).toHaveValue(initialValue)
-  // })
-
-  it('ToDo', () => {
-    expect(true).toBeTruthy()
+describe('Header component', () => {
+  it('Click on button calls dispatch', () => {
+    const func = vi.spyOn(storeHooks, 'useAppDispatch')
+    render(
+      <Provider store={store}>
+        <ThemeProvider>
+          <MemoryRouter>
+            <Header />
+          </MemoryRouter>
+        </ThemeProvider>
+      </Provider>
+    )
+    const button = screen.getByText(/search/i)
+    fireEvent.click(button)
+    expect(func).toHaveBeenCalled()
+  })
+  it('On first render header requests an initial value from store', () => {
+    const func = vi.spyOn(storeHooks, 'useAppSelector')
+    render(
+      <Provider store={store}>
+        <ThemeProvider>
+          <MemoryRouter>
+            <Header />
+          </MemoryRouter>
+        </ThemeProvider>
+      </Provider>
+    )
+    expect(func).toHaveBeenCalled()
   })
 })

@@ -1,5 +1,12 @@
-export const cards = {
-  count: 2,
+import CardData from '../../models/CardData'
+
+export const cards: {
+  count: number
+  next: null
+  previous: null
+  results: CardData[]
+} = {
+  count: 20,
   next: null,
   previous: null,
   results: [
