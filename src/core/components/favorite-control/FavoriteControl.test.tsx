@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
-import * as reduxHooks from '../../../shared/hooks/storeHooks'
-import { cards } from '../../../mocks/mockedData/cards'
+import * as reduxHooks from '@shared/hooks/storeHooks'
 import { fireEvent, render, screen } from '@testing-library/react'
+import { cards } from '@mocks/mockedData/cards'
 import FavoriteControl from './FavoriteControl'
 
 describe('FavoriteControl component', () => {

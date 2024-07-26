@@ -1,4 +1,4 @@
-import CardData from '../../models/CardData'
+import CardData from '@models/CardData'
 
 export const cards: {
   count: number

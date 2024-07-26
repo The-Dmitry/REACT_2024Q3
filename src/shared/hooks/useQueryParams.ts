@@ -1,6 +1,6 @@
-import { useSearchParams } from 'react-router-dom'
-import { SearchParams } from '../../models/SearchParams'
 import { useCallback, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
+import { SearchParams } from '@models/SearchParams'
 
 const UseQueryParams = () => {
   const [searchParams, setSearchParams] = useSearchParams()

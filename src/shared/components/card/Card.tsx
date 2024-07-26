@@ -1,10 +1,10 @@
-import styles from './card.module.css'
-import CardData from '../../../models/CardData'
-import { useSearchParams } from 'react-router-dom'
-import getImageSrc from '../../utils/getImageSrc/getImageSrc'
-import { useAppDispatch, useAppSelector } from '../../hooks/storeHooks'
-import { handleFavorites } from '../../../redux/slice/favorite-slice'
 import CardCheckbox from '../card-checkbox/CardCheckbox'
+import { useSearchParams } from 'react-router-dom'
+import { handleFavorites } from '@redux/slice/favorite-slice'
+import { useAppSelector, useAppDispatch } from '@shared/hooks/storeHooks'
+import getImageSrc from '@shared/utils/getImageSrc/getImageSrc'
+import CardData from '@models/CardData'
+import styles from './card.module.css'
 
 export default function Card(card: CardData) {
   const setSearchParams = useSearchParams()[1]

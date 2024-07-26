@@ -12,6 +12,7 @@
   transition:
     color linear 0.2s,
     background-color linear 0.2s;
+
   @media (hover: hover) {
     &:hover {
       color: var(--card-hover);

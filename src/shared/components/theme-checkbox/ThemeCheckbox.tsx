@@ -1,6 +1,6 @@
-import styles from './ThemeCheckbox.module.css'
 import { useContext } from 'react'
-import { ThemeContext } from '../../../core/context/ThemeContext'
+import { ThemeContext } from '@core/context/ThemeContext'
+import styles from './ThemeCheckbox.module.css'
 
 export default function ThemeCheckbox() {
   const { handleTheme, theme } = useContext(ThemeContext)

@@ -3,7 +3,7 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import { Provider } from 'react-redux'
 import * as paramsHook from '../../hooks/useQueryParams'
 import RestoreParameters from './RestoreParameters'
-import { store } from '../../../redux/store'
+import { store } from '@redux/store'
 import { createMemoryRouter, RouterProvider } from 'react-router'
 
 describe('RestoreParameters component', () => {

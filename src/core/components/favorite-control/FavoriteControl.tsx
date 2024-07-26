@@ -1,11 +1,8 @@
+import Button from '@shared/components/button/Button'
+import { clearFavorites } from '@redux/slice/favorite-slice'
+import { DownloadLink } from '@shared/components/download-link/DownloadLink'
+import { useAppSelector, useAppDispatch } from '@shared/hooks/storeHooks'
 import styles from './FavoriteControl.module.css'
-import Button from '../../../shared/components/button/Button'
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '../../../shared/hooks/storeHooks'
-import { clearFavorites } from '../../../redux/slice/favorite-slice'
-import { DownloadLink } from '../../../shared/components/download-link/DownloadLink'
 
 export default function FavoriteControl() {
   const collection = useAppSelector((state) => state.favoriteCards)

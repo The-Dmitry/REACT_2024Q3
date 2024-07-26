@@ -22,12 +22,15 @@
     4px 4px 5px 0px rgba(0, 0, 0, 0.1);
   background: var(--button-color);
 }
+
 .button:hover {
   background-color: var(--button-hover-color);
 }
+
 .button:disabled {
   background-color: #7ea487;
 }
+
 .button:active {
   top: 1px;
 }

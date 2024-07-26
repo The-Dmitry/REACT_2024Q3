@@ -1,6 +1,6 @@
-import styles from './ThemeProvider.module.css'
 import { ReactNode, useState, useCallback } from 'react'
-import { Theme, ThemeContext } from '../../context/ThemeContext'
+import { Theme, ThemeContext } from '@core/context/ThemeContext'
+import styles from './ThemeProvider.module.css'
 
 export default function ThemeProvider({
   children,

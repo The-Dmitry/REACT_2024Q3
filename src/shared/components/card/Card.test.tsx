@@ -2,10 +2,10 @@ import { createMemoryRouter, RouterProvider } from 'react-router'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 import Card from './Card'
-import { cards } from '../../../mocks/mockedData/cards'
+import { cards } from '@mocks/mockedData/cards'
 import { Provider } from 'react-redux'
-import { store } from '../../../redux/store'
-import * as storeHooks from '../../hooks/storeHooks'
+import { store } from '@redux/store'
+import * as storeHooks from '@shared/hooks/storeHooks'
 
 const routes = [
   {

@@ -1,8 +1,8 @@
+import Loader from '@shared/components/loader/Loader'
+import UseQueryParams from '@shared/hooks/useQueryParams'
+import { useGetDetailsQuery } from '@redux/api/swApi'
+import getImageSrc from '@shared/utils/getImageSrc/getImageSrc'
 import styles from './details.module.css'
-import getImageSrc from '../../shared/utils/getImageSrc/getImageSrc'
-import Loader from '../../shared/components/loader/Loader'
-import { useGetDetailsQuery } from '../../redux/api/swApi'
-import UseQueryParams from '../../shared/hooks/useQueryParams'
 
 export default function Details() {
   const { clearParams, id } = UseQueryParams()
@@ -20,7 +20,6 @@ export default function Details() {
           className={styles.close}
           title="Close"
         />
-        {error && <h3 className={styles.empty}>Nothing found.</h3>}
         {isFetching ? (
           <Loader />
         ) : (
@@ -45,6 +44,7 @@ export default function Details() {
             )}
           </>
         )}
+        {error && <h3 className={styles.empty}>Nothing found.</h3>}
       </div>
     </>
   )

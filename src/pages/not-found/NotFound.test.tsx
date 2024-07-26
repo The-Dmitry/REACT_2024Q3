@@ -2,8 +2,7 @@ import { createMemoryRouter } from 'react-router'
 import { describe, expect, it } from 'vitest'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { RouterProvider } from 'react-router-dom'
-
-import { routes } from '../../core/router/router'
+import { routes } from '@core/router/router'
 import NotFound from './NotFound'
 
 describe('NotFound page', () => {

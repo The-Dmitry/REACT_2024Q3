@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { ApiResponse } from '../../models/ApiResponse'
-import CardData from '../../models/CardData'
+import { ApiResponse } from '@models/ApiResponse'
+import CardData from '@models/CardData'
 
 export const swApi = createApi({
   reducerPath: 'sw-api',

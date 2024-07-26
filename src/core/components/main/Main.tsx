@@ -1,11 +1,11 @@
-import styles from './main.module.css'
-import Card from '../../../shared/components/card/Card'
-import RestoreParameters from '../../../shared/components/restore-parameters/RestoreParameters'
+import Card from '@shared/components/card/Card'
+import Loader from '@shared/components/loader/Loader'
 import Pagination from '../pagination/Pagination'
-import { useGetListQuery } from '../../../redux/api/swApi'
-import { useAppSelector } from '../../../shared/hooks/storeHooks'
-import Loader from '../../../shared/components/loader/Loader'
-import UseQueryParams from '../../../shared/hooks/useQueryParams'
+import RestoreParameters from '@shared/components/restore-parameters/RestoreParameters'
+import UseQueryParams from '@shared/hooks/useQueryParams'
+import { useGetListQuery } from '@redux/api/swApi'
+import { useAppSelector } from '@shared/hooks/storeHooks'
+import styles from './main.module.css'
 
 export default function Main() {
   const { page } = UseQueryParams()

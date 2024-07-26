@@ -1,12 +1,12 @@
 import { createMemoryRouter, RouterProvider } from 'react-router'
 import { describe, expect, it, vi } from 'vitest'
-import { routes } from '../../core/router/router'
 import { render, screen } from '@testing-library/react'
-import { cards } from '../../mocks/mockedData/cards'
-import { Provider } from 'react-redux'
-import { store } from '../../redux/store'
 import Details from './Details'
-import * as paramsHook from '../../shared/hooks/useQueryParams'
+import * as paramsHook from '@shared/hooks/useQueryParams'
+import { routes } from '@core/router/router'
+import { cards } from '@mocks/mockedData/cards'
+import { store } from '@redux/store'
+import { Provider } from 'react-redux'
 
 describe('Details component', () => {
   it('Component opens if search param "details=" exists', () => {
@@ -40,7 +40,6 @@ describe('Details component', () => {
     expect(screen.queryByTestId('details')).not.toBeInTheDocument()
   })
   it('The component displays data', async () => {
-    vi
     const router = createMemoryRouter(routes, {
       initialEntries: ['?details=4'],
     })

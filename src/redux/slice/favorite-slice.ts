@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import CardData from '../../models/CardData'
+import CardData from '@models/CardData'
 
 const initialState: Record<string, CardData> = {}
 

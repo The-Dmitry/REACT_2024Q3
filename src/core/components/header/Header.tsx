@@ -1,13 +1,10 @@
+import Button from '@shared/components/button/Button'
+import ThemeCheckbox from '@shared/components/theme-checkbox/ThemeCheckbox'
+import UseQueryParams from '@shared/hooks/useQueryParams'
 import { useEffect, useState } from 'react'
-import Button from '../../../shared/components/button/Button'
+import { setWord } from '@redux/slice/search-slice'
+import { useAppDispatch, useAppSelector } from '@shared/hooks/storeHooks'
 import styles from './header.module.css'
-import { setWord } from '../../../redux/slice/search-slice'
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '../../../shared/hooks/storeHooks'
-import UseQueryParams from '../../../shared/hooks/useQueryParams'
-import ThemeCheckbox from '../../../shared/components/theme-checkbox/ThemeCheckbox'
 
 const Header = () => {
   const { setParams } = UseQueryParams()

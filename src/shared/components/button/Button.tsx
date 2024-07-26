@@ -9,6 +9,7 @@ export default function Button({ children, warning = false, ...rest }: Props) {
   const handler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.stopPropagation()
   }
+
   return (
     <button
       className={`${styles.button} ${warning ? styles.warning : ''}`}

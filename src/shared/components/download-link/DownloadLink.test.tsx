@@ -1,8 +1,8 @@
 import { describe, it, expect, vi } from 'vitest'
-import { DownloadLink } from './DownloadLink'
 import { render } from '@testing-library/react'
-import { cards } from '../../../mocks/mockedData/cards'
 import styles from './DownloadLink.module.css'
+import { cards } from '@mocks/mockedData/cards'
+import { DownloadLink } from './DownloadLink'
 
 describe('DownloadLink component', () => {
   const mockData = {

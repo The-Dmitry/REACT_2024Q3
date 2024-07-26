@@ -4,7 +4,7 @@ import {
   clearFavorites,
   favoriteCardSlice,
 } from './favorite-slice'
-import { cards } from '../../mocks/mockedData/cards'
+import { cards } from '@mocks/mockedData/cards'
 
 const mock = cards.results[0]
 describe('Redux FavoriteCard slice', () => {

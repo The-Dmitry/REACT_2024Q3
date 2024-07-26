@@ -21,10 +21,11 @@ export default class ErrorBoundary extends Component<Props, State> {
   render(): ReactNode {
     return (
       <>
-        {this.state.error && (
+        {this.state.error ? (
           <Fallback reload={() => this.setState({ error: false })} />
+        ) : (
+          this.props.children
         )}
-        {!this.state.error && this.props.children}
       </>
     )
   }
