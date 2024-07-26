@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { Details, Layout, NotFound } from '../../pages'
-import ErrorBoundary from '../components/error-boundary/ErrorBoundary'
+import { Layout, Details, NotFound } from '@pages/index'
+import ErrorBoundary from '@core/components/error-boundary/ErrorBoundary'
 
 export const routes = [
   {

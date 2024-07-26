@@ -1,14 +1,25 @@
-import { memo, useState } from 'react'
-import Button from '../../../shared/components/button/Button'
+import Button from '@shared/components/button/Button'
+import ThemeCheckbox from '@shared/components/theme-checkbox/ThemeCheckbox'
+import UseQueryParams from '@shared/hooks/useQueryParams'
+import { useEffect, useState } from 'react'
+import { setWord } from '@redux/slice/search-slice'
+import { useAppDispatch, useAppSelector } from '@shared/hooks/storeHooks'
 import styles from './header.module.css'
 
-type HeaderProps = {
-  submit: (value: string) => void
-  getValueFromLS: () => string
-}
+const Header = () => {
+  const { setParams } = UseQueryParams()
+  const dispatch = useAppDispatch()
+  const [value, setValue] = useState('')
+  const { search } = useAppSelector((state) => state.searchWord)
 
-const Header = memo(({ submit, getValueFromLS }: HeaderProps) => {
-  const [value, setValue] = useState(getValueFromLS())
+  const setNewSearch = () => {
+    setParams('1', 'page')
+    dispatch(setWord(value))
+  }
+
+  useEffect(() => {
+    setValue(search)
+  }, [search])
 
   return (
     <header className={styles.header}>
@@ -18,9 +29,12 @@ const Header = memo(({ submit, getValueFromLS }: HeaderProps) => {
         value={value}
         onInput={(e) => setValue((e.target as HTMLInputElement).value)}
       />
-      <Button onClick={() => submit(value)}>Search</Button>
+      <Button warning={false} onClick={setNewSearch}>
+        Search
+      </Button>
+      <ThemeCheckbox />
     </header>
   )
-})
+}
 
 export default Header

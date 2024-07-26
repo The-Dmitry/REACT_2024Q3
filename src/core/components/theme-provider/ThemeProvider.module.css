@@ -1,0 +1,26 @@
+.wrapper {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px 1fr;
+  background-color: var(--background);
+  transition: background-color linear 0.2s;
+}
+
+.light {
+  --primary-color: blue;
+  --background: white;
+  --card-hover: blue;
+  --button-color: #24c57f;
+  --button-hover-color: #2ce958;
+  color: rgb(0, 0, 0);
+}
+
+.dark {
+  --primary-color: #255a89;
+  --background: #424549;
+  --card-hover: #7cc2ff;
+  --button-color: #22b6c4;
+  --button-hover-color: #35d1e0;
+  color: white;
+}

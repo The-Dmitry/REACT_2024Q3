@@ -35,11 +35,13 @@
   border: none;
   transition: all linear 0.2s;
   color: var(--button-color);
+
   @media (hover: hover) {
     &:hover {
       scale: 1.1;
     }
   }
+
   &::after,
   &::before {
     content: '';
@@ -51,6 +53,7 @@
     background-color: currentColor;
     rotate: 45deg;
   }
+
   &::after {
     rotate: -45deg;
   }

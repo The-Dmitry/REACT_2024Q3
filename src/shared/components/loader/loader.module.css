@@ -12,7 +12,7 @@
   display: block;
   margin: 20px auto;
   position: relative;
-  border: 3px solid blue;
+  border: 3px solid var(--card-hover);
   border-radius: 50%;
   box-sizing: border-box;
   animation: animloader 2s linear infinite;
@@ -23,7 +23,7 @@
   box-sizing: border-box;
   width: 6px;
   height: 24px;
-  background: blue;
+  background: var(--card-hover);
   transform: rotate(-45deg);
   position: absolute;
   bottom: -20px;

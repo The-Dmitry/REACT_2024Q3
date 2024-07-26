@@ -1,30 +1,33 @@
-import { useSearchParams } from 'react-router-dom'
-import { SearchParams } from '../../models/SearchParams'
 import { useCallback, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
+import { SearchParams } from '@models/SearchParams'
 
-const UseQueryParams = (name: SearchParams) => {
+const UseQueryParams = () => {
   const [searchParams, setSearchParams] = useSearchParams()
 
-  const page = searchParams.get('page')
+  const page = searchParams.get('page') || ''
 
-  const id = searchParams.get('details')
+  const id = searchParams.get('details') || ''
 
   const setParams = useCallback(
-    (value: string, key = name) => {
+    (value: string, key: SearchParams) => {
       setSearchParams((params) => {
         params.set(key, value)
         return params
       })
     },
-    [name, setSearchParams]
+    [setSearchParams]
   )
 
-  const clearParams = () => {
-    setSearchParams((params) => {
-      params.delete(name)
-      return params
-    })
-  }
+  const clearParams = useCallback(
+    (key: SearchParams) => {
+      setSearchParams((params) => {
+        params.delete(key)
+        return params
+      })
+    },
+    [setSearchParams]
+  )
 
   const resetAllParameters = () => {
     setSearchParams((params) => {
