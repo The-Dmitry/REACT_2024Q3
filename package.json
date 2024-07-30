@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --open",
-    "build": "tsc -b && vite build",
+    "dev": "next dev",
+    "build": "next build",
     "lint": "eslint ./src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "format:fix": "prettier ./src --write",
     "preview": "vite preview",
@@ -15,11 +15,10 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "https://pkg.csb.dev/reduxjs/redux-toolkit/commit/beb818cb/@reduxjs/toolkit",
+    "next": "^14.2.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-redux": "^9.1.2",
-    "react-router": "^6.24.1",
-    "react-router-dom": "^6.24.1"
+    "react-redux": "^9.1.2"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.4.6",
@@ -41,7 +40,6 @@
     "msw": "^2.3.1",
     "prettier": "3.3.2",
     "typescript": "^5.2.2",
-    "vite": "^5.3.1",
     "vitest": "^2.0.2"
   }
 }

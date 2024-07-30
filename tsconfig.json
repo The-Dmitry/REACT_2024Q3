@@ -1,15 +1,37 @@
 {
-  "files": [],
   "compilerOptions": {
-    "lib": ["ES2021.String"],
-    "types": ["vitest/globals", "@testing-library/jest-dom"]
-  },
-  "references": [
-    {
-      "path": "./tsconfig.app.json"
+    "target": "ES2020",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "jsx": "preserve",
+    "baseUrl": "./",
+    "paths": {
+      "@core/*": ["src/core/*"],
+      "@mocks/*": ["src/mocks/*"],
+      "@models/*": ["src/models/*"],
+      "@pages/*": ["src/pages/*"],
+      "@redux/*": ["src/redux/*"],
+      "@shared/*": ["src/shared/*"]
     },
-    {
-      "path": "./tsconfig.node.json"
-    }
-  ]
+    "plugins": [{ "name": "next" }],
+    "strict": false,
+    "incremental": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true
+  },
+  "include": [
+    "pages",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/**/*.ts",
+    "**/**/*.tsx"
+  ],
+  "exclude": ["node_modules"]
 }
