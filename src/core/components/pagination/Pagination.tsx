@@ -1,16 +1,22 @@
 import Button from '@shared/components/button/Button'
-import UseQueryParams from '@shared/hooks/useQueryParams'
-import { useGetListQuery } from '@redux/api/swApi'
-import { useAppSelector } from '@shared/hooks/storeHooks'
 import styles from './pagination.module.css'
+import { ApiResponse } from '@models/ApiResponse'
+import { useRouter } from 'next/router'
 
-export default function Pagination() {
-  const { setParams, page } = UseQueryParams()
-  const { search } = useAppSelector((state) => state.searchWord)
-  const { data } = useGetListQuery({ search, page })
+interface Props {
+  data: ApiResponse
+  page: string
+}
 
+export default function Pagination({ data, page }: Props) {
+  const router = useRouter()
   if (!data || data.count < 10) {
     return null
+  }
+
+  const handleClick = (num: number) => {
+    const page = `${num}`
+    router.push({ query: { ...router.query, page } })
   }
 
   const pageCount: number[] = new Array(Math.ceil(data.count / 10)).fill(0)
@@ -21,8 +27,8 @@ export default function Pagination() {
         <Button
           warning={false}
           key={i}
-          disabled={!!page && i + 1 === +page}
-          onClick={() => setParams(`${i + 1}`, 'page')}
+          disabled={page && i + 1 === +page}
+          onClick={() => handleClick(i + 1)}
           style={{ minWidth: 'fit-content' }}
         >
           {i + 1}

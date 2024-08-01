@@ -1,25 +1,16 @@
 import Button from '@shared/components/button/Button'
 import ThemeCheckbox from '@shared/components/theme-checkbox/ThemeCheckbox'
-import UseQueryParams from '@shared/hooks/useQueryParams'
-import { useEffect, useState } from 'react'
-import { setWord } from '@redux/slice/search-slice'
-import { useAppDispatch, useAppSelector } from '@shared/hooks/storeHooks'
 import styles from './header.module.css'
+import { useState } from 'react'
+import { useRouter } from 'next/router'
 
 const Header = () => {
-  const { setParams } = UseQueryParams()
-  const dispatch = useAppDispatch()
+  const router = useRouter()
   const [value, setValue] = useState('')
-  const { search } = useAppSelector((state) => state.searchWord)
 
-  const setNewSearch = () => {
-    setParams('1', 'page')
-    dispatch(setWord(value))
+  const submit = () => {
+    router.push({ query: { ...router.query, search: value } })
   }
-
-  useEffect(() => {
-    setValue(search)
-  }, [search])
 
   return (
     <header className={styles.header}>
@@ -29,7 +20,7 @@ const Header = () => {
         value={value}
         onInput={(e) => setValue((e.target as HTMLInputElement).value)}
       />
-      <Button warning={false} onClick={setNewSearch}>
+      <Button warning={false} onClick={submit}>
         Search
       </Button>
       <ThemeCheckbox />
