@@ -2,22 +2,21 @@ import CardCheckbox from '../card-checkbox/CardCheckbox'
 import getImageSrc from '@shared/utils/getImageSrc/getImageSrc'
 import CardData from '@models/CardData'
 import styles from './card.module.css'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 export default function Card(card: CardData) {
-  // const id = card.url.replace(/[^\d]/g, '')
-
-  // const openDetails = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
-  //   e.stopPropagation()
-  //   setSearchParams((params) => {
-  //     params.set('details', id)
-  //     return params
-  //   })
-  // }
+  const { query } = useRouter()
+  const details = card.url.replace(/[^\d]/g, '')
 
   const handleChange = () => {}
 
   return (
-    <li className={styles.card} data-testid="card">
+    <Link
+      href={{ query: { ...query, details } }}
+      className={styles.card}
+      data-testid="card"
+    >
       <CardCheckbox
         isChecked={true}
         handleChange={handleChange}
@@ -30,6 +29,6 @@ export default function Card(card: CardData) {
         alt={card.name}
       />
       <h3>{card.name}</h3>
-    </li>
+    </Link>
   )
 }
