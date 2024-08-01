@@ -1,15 +1,29 @@
 import Button from '@shared/components/button/Button'
 import ThemeCheckbox from '@shared/components/theme-checkbox/ThemeCheckbox'
 import styles from './header.module.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 const Header = () => {
   const router = useRouter()
-  const [value, setValue] = useState('')
+  const [value, setValue] = useState<string>('')
+
+  useEffect(() => {
+    const obj = { ...router.query }
+    if ('search' in obj && typeof obj['search'] === 'string') {
+      setValue(obj['search'])
+    }
+  }, [router.query])
 
   const submit = () => {
-    router.push({ query: { ...router.query, search: value } })
+    const search = value.trim()
+    const query = { ...router.query, page: '1' }
+    if ('search' in query && search === '') {
+      delete query.search
+    }
+    search
+      ? router.push({ query: { ...query, search } })
+      : router.push({ query })
   }
 
   return (

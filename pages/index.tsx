@@ -11,8 +11,8 @@ interface Props {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { page = '1' } = context.query
-  const people = await fetchPeople(page as string)
+  const { page = '1', search = '' } = context.query
+  const people = await fetchPeople(page as string, search as string)
   return {
     props: { people, page },
   }
