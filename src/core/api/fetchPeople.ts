@@ -7,6 +7,5 @@ export async function fetchPeople(
   const res = await fetch(
     `https://swapi.dev/api/people/?page=${page}&search=${search}`
   )
-  const data = await res.json()
-  return data
+  return await res.json()
 }

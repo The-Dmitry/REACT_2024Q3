@@ -1,16 +1,11 @@
+import { useRouter } from 'next/router'
 import Button from '../button/Button'
-import UseQueryParams from '../../hooks/useQueryParams'
-import { useAppDispatch } from '../../hooks/storeHooks'
-import { setWord } from '../../../redux/slice/search-slice'
 import styles from './restoreParameters.module.css'
 
 export default function RestoreParameters() {
-  const { resetAllParameters } = UseQueryParams()
-  const dispatch = useAppDispatch()
-
+  const router = useRouter()
   const handleClick = () => {
-    resetAllParameters()
-    dispatch(setWord(''))
+    router.push({ query: {} })
   }
 
   return (
