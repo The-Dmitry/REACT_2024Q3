@@ -9,20 +9,13 @@ export default function Card(card: CardData) {
   const { query } = useRouter()
   const details = card.url.replace(/[^\d]/g, '')
 
-  const handleChange = () => {}
-
   return (
     <Link
       href={{ query: { ...query, details } }}
       className={styles.card}
       data-testid="card"
     >
-      <CardCheckbox
-        isChecked={true}
-        handleChange={handleChange}
-        // isChecked={card.name in favoriteCards}
-        // handleChange={handleChange}
-      />
+      <CardCheckbox card={card} />
       <img
         className={styles.image}
         src={getImageSrc(card.url)}

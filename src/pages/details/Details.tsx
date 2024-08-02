@@ -11,6 +11,7 @@ export default function Details({ data }: { data: CardData }) {
     delete query.details
     router.push({ query })
   }
+
   return (
     <>
       <div className={styles.details} data-testid="details">

@@ -1,17 +1,22 @@
+import { useContext } from 'react'
 import styles from './CardCheckbox.module.css'
+import { FavoriteContext } from '@core/context/FavoriteContext'
+import CardData from '@models/CardData'
 
 interface Props {
-  isChecked: boolean
-  handleChange: () => void
+  card: CardData
 }
 
-export default function CardCheckbox({ isChecked, handleChange }: Props) {
+export default function CardCheckbox({ card }: Props) {
+  const { collection, handleCard } = useContext(FavoriteContext)
+  const handleChange = () => handleCard(card)
+
   return (
     <label className={styles.container} onClick={(e) => e.stopPropagation()}>
       <input
         className={styles.input}
         type="checkbox"
-        checked={isChecked}
+        checked={card.name in collection}
         onChange={handleChange}
       />
       <svg
