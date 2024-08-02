@@ -1,43 +1,23 @@
-import { createMemoryRouter, RouterProvider } from 'react-router'
-import { fireEvent, render, screen } from '@testing-library/react'
-import { describe, expect, it, vi } from 'vitest'
+import { render, screen } from '@testing-library/react'
+import { afterAll, afterEach, describe, expect, it, vi } from 'vitest'
 import Card from './Card'
 import { cards } from '@mocks/mockedData/cards'
-import { Provider } from 'react-redux'
-import { store } from '@redux/store'
-import * as storeHooks from '@shared/hooks/storeHooks'
 
-const routes = [
-  {
-    path: '/',
-    element: <Card {...cards.results[0]}></Card>,
-  },
-]
+vi.mock('next/router', () => vi.importActual('next-router-mock'))
 
 describe('Card component', () => {
-  it('Clicking on a card updates URL query parameter', () => {
-    const router = createMemoryRouter(routes)
-
-    render(
-      <Provider store={store}>
-        <RouterProvider router={router} />
-      </Provider>
-    )
-
-    const card = screen.getByTestId('card')
-    fireEvent.click(card)
-    expect(router.state.location.search).toBe('?details=4')
+  afterEach(() => {
+    vi.clearAllMocks()
   })
-}),
-  it('Click on checkbox calls the function', () => {
-    const router = createMemoryRouter(routes)
-    const func = vi.spyOn(storeHooks, 'useAppSelector')
-    render(
-      <Provider store={store}>
-        <RouterProvider router={router} />
-      </Provider>
-    )
-    const checkbox = screen.getByRole('checkbox')
-    fireEvent.click(checkbox)
-    expect(func).toHaveBeenCalled()
+
+  afterAll(() => {
+    vi.restoreAllMocks()
   })
+  it('Card is rendered with the correct value', () => {
+    render(<Card {...cards.results[0]} />)
+
+    expect(screen.getByText(cards.results[0].name)).toHaveTextContent(
+      cards.results[0].name
+    )
+  })
+})

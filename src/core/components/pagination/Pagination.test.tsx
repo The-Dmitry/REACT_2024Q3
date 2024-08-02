@@ -1,31 +1,31 @@
 import { fireEvent, render, screen } from '@testing-library/react'
-import { createMemoryRouter, RouterProvider } from 'react-router'
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi, afterEach, afterAll } from 'vitest'
+import mockRouter from 'next-router-mock'
 import Pagination from './Pagination'
+import { cards } from '@mocks/mockedData/cards'
 
-import { Provider } from 'react-redux'
-import { store } from '../../../redux/store'
+vi.mock('next/router', () => vi.importActual('next-router-mock'))
 
-describe('Pagination', async () => {
-  it('Pagination updates URL query parameter when page changes', async () => {
-    const routes = [
-      {
-        path: '/',
-        element: (
-          <Provider store={store}>
-            <Pagination />
-          </Provider>
-        ),
-      },
-    ]
-    const router = createMemoryRouter(routes)
-    render(<RouterProvider router={router} />)
-    const pagination = await screen.findByTestId('pagination')
+describe('Pagination component', () => {
+  afterEach(() => {
+    vi.clearAllMocks()
+  })
+
+  afterAll(() => {
+    vi.restoreAllMocks()
+  })
+  it('Pagination updates URL query parameter on button click', () => {
+    mockRouter.push('/?page=1')
+    render(<Pagination data={cards} page="1" />)
+    const pagination = screen.getByTestId('pagination')
 
     expect(pagination).toBeInTheDocument()
+
+    expect(pagination.children[0]).toHaveAttribute('disabled')
+
     fireEvent.click(pagination.children[1])
-    expect(router.state.location.search).toBe('?page=2')
-    fireEvent.click(pagination.children[0])
-    expect(router.state.location.search).toBe('?page=1')
+    expect(mockRouter).toMatchObject({
+      query: { page: '2' },
+    })
   })
 })

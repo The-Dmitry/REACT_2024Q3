@@ -1,8 +1,8 @@
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import Button from '@shared/components/button/Button'
 import ThemeCheckbox from '@shared/components/theme-checkbox/ThemeCheckbox'
 import styles from './header.module.css'
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
 
 const Header = () => {
   const router = useRouter()

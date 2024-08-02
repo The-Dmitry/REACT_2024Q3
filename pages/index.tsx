@@ -1,11 +1,11 @@
-import { fetchPeople } from '@core/api/fetchPeople'
 import { GetServerSideProps, NextPage } from 'next'
-import { ApiResponse } from '@models/ApiResponse'
 import Main from '@core/components/main/Main'
-import { fetchDetails } from '@core/api/fetchDetails'
-import CardData from '@models/CardData'
-import { Details } from '@pages/index'
 import NextLoader from '@shared/components/next-loader/NextLoader'
+import Details from '@pages/details/Details'
+import { fetchPeople } from '@core/api/fetch-people/fetchPeople'
+import { ApiResponse } from '@models/ApiResponse'
+import { fetchDetails } from '@core/api/fetch-details/fetchDetails'
+import CardData from '@models/CardData'
 
 interface Props {
   people: ApiResponse

@@ -1,8 +1,8 @@
+import { useContext } from 'react'
 import Button from '@shared/components/button/Button'
 import { DownloadLink } from '@shared/components/download-link/DownloadLink'
-import styles from './FavoriteControl.module.css'
-import { useContext } from 'react'
 import { FavoriteContext } from '@core/context/FavoriteContext'
+import styles from './FavoriteControl.module.css'
 
 export default function FavoriteControl() {
   const { collection, clearCollection } = useContext(FavoriteContext)

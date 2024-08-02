@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 import CardCheckbox from '../card-checkbox/CardCheckbox'
 import getImageSrc from '@shared/utils/getImageSrc/getImageSrc'
 import CardData from '@models/CardData'
-import Link from 'next/link'
 import styles from './card.module.css'
 
 export default function Card(card: CardData) {

@@ -1,9 +1,9 @@
+import Head from 'next/head'
 import ThemeProvider from '@core/components/theme-provider/ThemeProvider'
-import '../src/index.css'
 import Layout from '@core/components/layout/Layout'
 import FavoriteProvider from '@core/components/favorite-provider/FavoriteProvider'
 import FavoriteControl from '@core/components/favorite-control/FavoriteControl'
-import Head from 'next/head'
+import '../src/index.css'
 
 export default function MyApp({ Component, pageProps }) {
   return (

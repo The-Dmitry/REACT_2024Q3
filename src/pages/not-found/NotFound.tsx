@@ -1,5 +1,5 @@
-import Button from '@shared/components/button/Button'
 import Link from 'next/link'
+import Button from '@shared/components/button/Button'
 import styles from './notFound.module.css'
 
 export default function NotFound() {

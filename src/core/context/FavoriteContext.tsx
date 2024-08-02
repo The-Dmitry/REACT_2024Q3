@@ -1,5 +1,5 @@
-import CardData from '@models/CardData'
 import { createContext } from 'react'
+import CardData from '@models/CardData'
 
 export type Theme = 'dark' | 'light'
 

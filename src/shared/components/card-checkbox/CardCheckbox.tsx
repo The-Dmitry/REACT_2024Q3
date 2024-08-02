@@ -1,7 +1,7 @@
 import { useContext } from 'react'
-import styles from './CardCheckbox.module.css'
 import { FavoriteContext } from '@core/context/FavoriteContext'
 import CardData from '@models/CardData'
+import styles from './CardCheckbox.module.css'
 
 interface Props {
   card: CardData

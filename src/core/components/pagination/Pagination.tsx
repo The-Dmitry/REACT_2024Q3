@@ -1,7 +1,7 @@
-import Button from '@shared/components/button/Button'
-import styles from './pagination.module.css'
-import { ApiResponse } from '@models/ApiResponse'
 import { useRouter } from 'next/router'
+import Button from '@shared/components/button/Button'
+import { ApiResponse } from '@models/ApiResponse'
+import styles from './pagination.module.css'
 
 interface Props {
   data: ApiResponse

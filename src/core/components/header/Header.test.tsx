@@ -1,40 +1,49 @@
-import { describe, expect, it, vi } from 'vitest'
+import { afterAll, afterEach, describe, expect, it, vi } from 'vitest'
 import { render, fireEvent, screen } from '@testing-library/react'
-import { MemoryRouter } from 'react-router-dom'
+import mockRouter from 'next-router-mock'
 import Header from './Header'
 
-import ThemeProvider from '../theme-provider/ThemeProvider'
-import { Provider } from 'react-redux'
-import * as storeHooks from '../../../shared/hooks/storeHooks'
-import { store } from '../../../redux/store'
+vi.mock('next/router', () => vi.importActual('next-router-mock'))
 
 describe('Header component', () => {
-  it('Click on button calls dispatch', () => {
-    const func = vi.spyOn(storeHooks, 'useAppDispatch')
-    render(
-      <Provider store={store}>
-        <ThemeProvider>
-          <MemoryRouter>
-            <Header />
-          </MemoryRouter>
-        </ThemeProvider>
-      </Provider>
-    )
-    const button = screen.getByText(/search/i)
-    fireEvent.click(button)
-    expect(func).toHaveBeenCalled()
+  afterEach(() => {
+    vi.clearAllMocks()
   })
-  it('On first render header requests an initial value from store', () => {
-    const func = vi.spyOn(storeHooks, 'useAppSelector')
-    render(
-      <Provider store={store}>
-        <ThemeProvider>
-          <MemoryRouter>
-            <Header />
-          </MemoryRouter>
-        </ThemeProvider>
-      </Provider>
-    )
-    expect(func).toHaveBeenCalled()
+
+  afterAll(() => {
+    vi.restoreAllMocks()
+  })
+
+  it('Updates search params on submit', () => {
+    mockRouter.push('/?page=3')
+    render(<Header />)
+    const testQuery = 'test query'
+    const button = screen.getByText('Search')
+    const input = screen.getByRole('searchbox')
+    fireEvent.input(input, { target: { value: testQuery } })
+    fireEvent.click(button)
+
+    expect(mockRouter).toMatchObject({
+      query: { search: testQuery, page: '1' },
+    })
+  })
+
+  it('Set default search params with empty value', () => {
+    mockRouter.push('/?page=3&search=test')
+    render(<Header />)
+    const button = screen.getByText('Search')
+    fireEvent.click(button)
+
+    expect(mockRouter).toMatchObject({
+      query: { page: '1' },
+    })
+  })
+
+  it('Set initial value from search on mount', () => {
+    mockRouter.push('/?page=3&search=test')
+    render(<Header />)
+    const input = screen.getByRole('searchbox')
+
+    expect(input).toHaveValue('test')
   })
 })

@@ -16,7 +16,12 @@ export default function ThemeProvider({
 
   return (
     <ThemeContext.Provider value={{ theme, handleTheme }}>
-      <div className={`${styles.wrapper} ${styles[theme]}`}>{children}</div>
+      <div
+        className={`${styles.wrapper} ${styles[theme]}`}
+        data-testid="theme-provider"
+      >
+        {children}
+      </div>
     </ThemeContext.Provider>
   )
 }

@@ -1,8 +1,8 @@
 import Card from '@shared/components/card/Card'
-import Pagination from '../pagination/Pagination'
-import styles from './main.module.css'
-import { ApiResponse } from '@models/ApiResponse'
+import Pagination from '@core/components/pagination/Pagination'
 import RestoreParameters from '@shared/components/restore-parameters/RestoreParameters'
+import { ApiResponse } from '@models/ApiResponse'
+import styles from './main.module.css'
 
 interface Props {
   data: ApiResponse

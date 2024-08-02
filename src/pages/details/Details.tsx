@@ -1,7 +1,7 @@
-import getImageSrc from '@shared/utils/getImageSrc/getImageSrc'
-import styles from './details.module.css'
-import CardData from '@models/CardData'
 import { useRouter } from 'next/router'
+import getImageSrc from '@shared/utils/getImageSrc/getImageSrc'
+import CardData from '@models/CardData'
+import styles from './details.module.css'
 
 export default function Details({ data }: { data: CardData }) {
   const router = useRouter()
@@ -15,7 +15,12 @@ export default function Details({ data }: { data: CardData }) {
   return (
     <>
       <div className={styles.details} data-testid="details">
-        <button onClick={closeDetails} className={styles.close} title="Close" />
+        <button
+          aria-label="close"
+          onClick={closeDetails}
+          className={styles.close}
+          title="Close"
+        />
         <img
           className={styles.image}
           src={getImageSrc(data.url)}

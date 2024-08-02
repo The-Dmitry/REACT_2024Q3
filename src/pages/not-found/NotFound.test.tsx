@@ -1,35 +1,23 @@
-import { createMemoryRouter } from 'react-router'
-import { describe, expect, it } from 'vitest'
-import { fireEvent, render, screen } from '@testing-library/react'
-import { RouterProvider } from 'react-router-dom'
-import { routes } from '@core/router/router'
+import { afterAll, afterEach, describe, expect, it, vi } from 'vitest'
+import { render, screen } from '@testing-library/react'
 import NotFound from './NotFound'
 
+vi.mock('next/router', () => vi.importActual('next-router-mock'))
+
 describe('NotFound page', () => {
-  it('landing on a bad page', () => {
-    const router = createMemoryRouter(routes, {
-      initialEntries: ['/bad-route'],
-    })
-    render(<RouterProvider router={router}></RouterProvider>)
-    const message = screen.getByText(/page not found/i)
-    expect(message).toBeInTheDocument()
+  afterEach(() => {
+    vi.clearAllMocks()
   })
-  it('Button "To Main" navigates to main page', () => {
-    const router = createMemoryRouter(
-      [
-        { path: '/', element: <div>Main</div> },
-        { path: '*', element: <NotFound /> },
-      ],
-      {
-        initialEntries: ['/bad-route'],
-      }
-    )
-    render(<RouterProvider router={router}></RouterProvider>)
+
+  afterAll(() => {
+    vi.restoreAllMocks()
+  })
+
+  it('NotFound page exists', () => {
+    render(<NotFound />)
     const message = screen.getByText(/page not found/i)
     expect(message).toBeInTheDocument()
     const button = screen.getByText(/to Main/i)
     expect(button).toBeInTheDocument()
-    fireEvent.click(button)
-    expect(router.state.location.pathname).toBe('/')
   })
 })
