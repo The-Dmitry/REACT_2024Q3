@@ -1,28 +1,19 @@
-'use client'
-import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
-import CardCheckbox from '../card-checkbox/CardCheckbox'
-import getImageSrc from '@shared/utils/getImageSrc/getImageSrc'
 import Image from 'next/image'
+import CardCheckbox from '../card-checkbox/CardCheckbox'
+import LinkWithQuery from '../link-with-query/LinkWithQuery'
 import CardData from '@models/CardData'
+import getImageSrc from '@shared/utils/getImageSrc/getImageSrc'
 import styles from './card.module.css'
 
 export default function Card(card: CardData) {
-  const params = useSearchParams()
   const details = card.url.replace(/[^\d]/g, '')
 
   return (
-    <Link
-      href={{
-        query: {
-          ...Object.fromEntries(params?.entries() || []),
-          details,
-        },
-      }}
+    <LinkWithQuery
       className={styles.card}
       data-testid="card"
+      query={{ details }}
     >
-      <CardCheckbox card={card} />
       <Image
         src={getImageSrc(card.url)}
         alt={card.name}
@@ -33,6 +24,7 @@ export default function Card(card: CardData) {
         quality={100}
       />
       <h3>{card.name}</h3>
-    </Link>
+      <CardCheckbox card={card} />
+    </LinkWithQuery>
   )
 }

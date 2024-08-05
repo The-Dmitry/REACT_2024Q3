@@ -1,9 +1,6 @@
 import PeopleWithLoader from '@core/components/people-with-loader/PeopleWithLoader'
+import PeopleProps from '@models/PeopleProps'
 
-interface Props {
-  searchParams: { page?: string; search?: string }
-}
-
-export default function People({ searchParams }: Props) {
+export default function People({ searchParams }: PeopleProps) {
   return <PeopleWithLoader searchParams={searchParams} />
 }

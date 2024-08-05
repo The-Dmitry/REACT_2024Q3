@@ -14,16 +14,18 @@ export default async function People({ searchParams }: Props) {
 
   return (
     <main className={styles.main}>
-      {data.results.length ? (
-        <ul className={styles.list}>
-          {data.results.map((info) => (
-            <Card key={info.name} {...info} />
-          ))}
-        </ul>
+      {'results' in data && data.results.length ? (
+        <>
+          <ul className={styles.list}>
+            {data.results.map((info) => (
+              <Card key={info.name} {...info} />
+            ))}
+          </ul>
+          <Pagination data={data} page={page} />
+        </>
       ) : (
         <RestoreParameters />
       )}
-      <Pagination data={data} page={page} />
     </main>
   )
 }

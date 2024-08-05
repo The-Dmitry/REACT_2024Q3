@@ -3,13 +3,11 @@ import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { AnchorHTMLAttributes } from 'react'
 import styles from './LinkWithQuery.module.css'
-import { SearchParamsType } from '@models/SearchParamsType'
 
 interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
   query?: { [key: string]: string | undefined }
   to?: string
   disabled?: boolean
-  exclude?: SearchParamsType
 }
 
 export default function LinkWithQuery({
@@ -25,7 +23,6 @@ export default function LinkWithQuery({
     const current = {
       ...Object.fromEntries(params?.entries() || []),
     }
-    rest.exclude && delete current[rest.exclude]
     return current
   }
 
@@ -33,6 +30,7 @@ export default function LinkWithQuery({
     <Link
       className={`${className ?? styles.button} ${disabled ? styles.disabled : ''}`}
       href={{
+        href: '',
         query: {
           ...prepareQuery(),
           ...query,
