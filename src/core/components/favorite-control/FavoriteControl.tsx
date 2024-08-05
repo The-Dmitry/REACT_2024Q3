@@ -1,3 +1,4 @@
+'use client'
 import { useContext } from 'react'
 import Button from '@shared/components/button/Button'
 import { DownloadLink } from '@shared/components/download-link/DownloadLink'

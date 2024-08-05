@@ -1,11 +1,10 @@
-import { useRouter } from 'next/router'
 import Button from '../button/Button'
 import styles from './restoreParameters.module.css'
 
 export default function RestoreParameters() {
-  const router = useRouter()
+  // const router = useRouter()
   const handleClick = () => {
-    router.push({ query: {} })
+    // router.push({ query: {} })
   }
 
   return (

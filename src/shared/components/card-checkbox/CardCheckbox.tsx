@@ -1,3 +1,4 @@
+'use client'
 import { useContext } from 'react'
 import { FavoriteContext } from '@core/context/FavoriteContext'
 import CardData from '@models/CardData'

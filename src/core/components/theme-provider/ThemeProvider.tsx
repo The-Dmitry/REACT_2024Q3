@@ -1,3 +1,4 @@
+'use client'
 import { ReactNode, useState, useCallback } from 'react'
 import { Theme, ThemeContext } from '@core/context/ThemeContext'
 import styles from './ThemeProvider.module.css'

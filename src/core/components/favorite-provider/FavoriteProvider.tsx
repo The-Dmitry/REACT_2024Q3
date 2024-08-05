@@ -1,3 +1,4 @@
+'use client'
 import { ReactNode } from 'react'
 import { FavoriteContext } from '@core/context/FavoriteContext'
 import { useCollection } from '@shared/components/hooks/useCollection'

@@ -1,7 +1,6 @@
-import { useRouter } from 'next/router'
-import Button from '@shared/components/button/Button'
 import { ApiResponse } from '@models/ApiResponse'
 import styles from './pagination.module.css'
+import LinkWithQuery from '@shared/components/link-with-query/LinkWithQuery'
 
 interface Props {
   data: ApiResponse
@@ -9,14 +8,8 @@ interface Props {
 }
 
 export default function Pagination({ data, page }: Props) {
-  const router = useRouter()
   if (!data || data.count < 10) {
-    return null
-  }
-
-  const handleClick = (num: number) => {
-    const page = `${num}`
-    router.push({ query: { ...router.query, page } })
+    return <></>
   }
 
   const pageCount: number[] = new Array(Math.ceil(data.count / 10)).fill(0)
@@ -24,15 +17,14 @@ export default function Pagination({ data, page }: Props) {
   return (
     <div className={styles.pagination} data-testid="pagination">
       {pageCount.map((_, i) => (
-        <Button
-          warning={false}
+        <LinkWithQuery
           key={i}
-          disabled={page && i + 1 === +page}
-          onClick={() => handleClick(i + 1)}
+          query={{ page: `${i + 1}` }}
           style={{ minWidth: 'fit-content' }}
+          disabled={!!(page && i + 1 === +page)}
         >
           {i + 1}
-        </Button>
+        </LinkWithQuery>
       ))}
     </div>
   )

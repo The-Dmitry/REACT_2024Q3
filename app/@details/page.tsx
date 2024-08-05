@@ -1,30 +1,35 @@
-import { useRouter } from 'next/router'
+import Image from 'next/image'
+import LinkWithQuery from '@shared/components/link-with-query/LinkWithQuery'
 import getImageSrc from '@shared/utils/getImageSrc/getImageSrc'
-import CardData from '@models/CardData'
+import { fetchDetails } from '@core/api/fetch-details/fetchDetails'
 import styles from './details.module.css'
 
-export default function Details({ data }: { data: CardData }) {
-  const router = useRouter()
+interface Props {
+  searchParams: { details?: string }
+}
 
-  const closeDetails = () => {
-    const query = { ...router.query }
-    delete query.details
-    router.push({ query })
+export default async function Details({ searchParams }: Props) {
+  if (!searchParams.details) {
+    return <></>
   }
+
+  const data = await fetchDetails(searchParams.details)
 
   return (
     <>
       <div className={styles.details} data-testid="details">
-        <button
-          aria-label="close"
-          onClick={closeDetails}
+        <LinkWithQuery
           className={styles.close}
-          title="Close"
-        />
-        <img
+          exclude="details"
+        ></LinkWithQuery>
+        <Image
           className={styles.image}
           src={getImageSrc(data.url)}
           alt={data.name}
+          width={500}
+          height={500}
+          style={{ width: '100%', height: 'auto' }}
+          quality={100}
         />
         <h2 className={styles.name}>{data.name}</h2>
         <ul className={styles.list}>
