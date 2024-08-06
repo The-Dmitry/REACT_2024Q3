@@ -7,7 +7,6 @@ import styles from './FavoriteControl.module.css'
 
 export default function FavoriteControl() {
   const { collection, clearCollection } = useContext(FavoriteContext)
-
   const { length } = Object.keys(collection)
 
   if (!length) {

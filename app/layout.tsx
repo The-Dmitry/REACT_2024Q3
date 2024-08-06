@@ -11,22 +11,16 @@ export const metadata = {
 
 interface Props {
   children: React.ReactNode
-  people: React.ReactNode
-  details: React.ReactNode
 }
 
-export default function RootLayout({ children, people, details }: Props) {
+export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
       <body>
         <ThemeProvider>
           <FavoriteProvider>
             <Header />
-            <div className="wrapper">
-              {people}
-              {details}
-              {children}
-            </div>
+            <div className="wrapper">{children}</div>
             <FavoriteControl />
           </FavoriteProvider>
         </ThemeProvider>

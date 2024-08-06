@@ -1,5 +1,5 @@
-import Link from 'next/link'
+import NotFound from '@pages/not-found/NotFound'
 
 export default function NotFoundPage() {
-  return <Link href="/">To Main</Link>
+  return <NotFound />
 }

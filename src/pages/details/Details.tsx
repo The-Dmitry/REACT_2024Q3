@@ -1,7 +1,7 @@
-import { fetchDetails } from '@core/api/fetch-details/fetchDetails'
+import Image from 'next/image'
 import LinkWithQuery from '@shared/components/link-with-query/LinkWithQuery'
 import getImageSrc from '@shared/utils/getImageSrc/getImageSrc'
-import Image from 'next/image'
+import { fetchDetails } from '@core/api/fetch-details/fetchDetails'
 import styles from './details.module.css'
 
 interface Props {

@@ -2,13 +2,10 @@ import Pagination from '@core/components/pagination/Pagination'
 import Card from '@shared/components/card/Card'
 import RestoreParameters from '@shared/components/restore-parameters/RestoreParameters'
 import { fetchPeople } from '@core/api/fetch-people/fetchPeople'
+import PageProps from '@models/PageProps'
 import styles from './People.module.css'
 
-interface Props {
-  searchParams: { page?: string; search?: string }
-}
-
-export default async function People({ searchParams }: Props) {
+export default async function People({ searchParams }: PageProps) {
   const { page = '1', search = '' } = searchParams
   const data = await fetchPeople(page, search)
 

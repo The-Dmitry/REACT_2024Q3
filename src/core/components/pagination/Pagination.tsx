@@ -1,6 +1,6 @@
+import LinkWithQuery from '@shared/components/link-with-query/LinkWithQuery'
 import { ApiResponse } from '@models/ApiResponse'
 import styles from './pagination.module.css'
-import LinkWithQuery from '@shared/components/link-with-query/LinkWithQuery'
 
 interface Props {
   data: ApiResponse
