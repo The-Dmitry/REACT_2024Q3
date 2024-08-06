@@ -22,7 +22,7 @@ const Header = () => {
         onInput={(e) => setValue((e.target as HTMLInputElement).value)}
       />
       <LinkWithQuery query={{ search: value.trim(), page: '1' }}>
-        Submit
+        Search
       </LinkWithQuery>
       <ThemeCheckbox />
     </header>

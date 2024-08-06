@@ -2,6 +2,7 @@ import { afterAll, afterEach, describe, expect, it, vi } from 'vitest'
 import { fireEvent, render, screen } from '@testing-library/react'
 import mockRouter from 'next-router-mock'
 import RestoreParameters from './RestoreParameters'
+import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider'
 
 vi.mock('next/router', () => vi.importActual('next-router-mock'))
 
@@ -16,7 +17,7 @@ describe('RestoreParameters component', () => {
 
   it('clicking the button resets search params', () => {
     mockRouter.push('/?details=1&=search=adawdaw&page=234')
-    render(<RestoreParameters />)
+    render(<RestoreParameters />, { wrapper: MemoryRouterProvider })
     const button = screen.getByText('Reset parameters')
     expect(button).toBeInTheDocument()
     fireEvent.click(button)

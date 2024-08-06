@@ -9,7 +9,7 @@ interface Props {
 
 export default function DetailsWithLoader({ id }: Props) {
   if (!id) {
-    return <></>
+    return null
   }
 
   return (

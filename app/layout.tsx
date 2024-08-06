@@ -24,9 +24,7 @@ export default function RootLayout({ children, people, details }: Props) {
             <Header />
             <div className="wrapper">
               {people}
-
               {details}
-
               {children}
             </div>
             <FavoriteControl />

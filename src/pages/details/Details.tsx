@@ -8,14 +8,15 @@ interface Props {
   id: string
 }
 
-export default async function Details({ id }: Props) {
-  const data = await fetchDetails(id)
+export default async function Details(props: Props) {
+  const data = await fetchDetails(props.id)
 
   return (
     <div className={styles.details} data-testid="details">
       <LinkWithQuery
         className={styles.close}
         query={{ details: '' }}
+        data-testid="close"
       ></LinkWithQuery>
       {'name' in data ? (
         <>
