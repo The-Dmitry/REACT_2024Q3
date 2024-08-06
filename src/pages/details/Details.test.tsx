@@ -26,7 +26,7 @@ describe('Details component', () => {
     render(jsx, { wrapper: MemoryRouterProvider })
     expect(screen.getByText(cards.results[0].name)).toBeInTheDocument()
   })
-  it('The component displays data', async () => {
+  it('The component set default params on close', async () => {
     mockRouter.push('/?details=1')
     const jsx = await Details({ id: '1' })
     render(jsx, { wrapper: MemoryRouterProvider })
