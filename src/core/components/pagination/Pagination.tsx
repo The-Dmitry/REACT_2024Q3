@@ -10,7 +10,7 @@ interface Props {
 
 export default function Pagination({ data, page }: Props) {
   const router = useRouter()
-  if (!data || data.count < 10) {
+  if (!('count' in data) || data.count < 10) {
     return null
   }
 

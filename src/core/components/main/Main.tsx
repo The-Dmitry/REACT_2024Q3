@@ -12,7 +12,7 @@ interface Props {
 export default function Main({ data, page }: Props) {
   return (
     <main className={styles.main}>
-      {data.results.length ? (
+      {'results' in data && data.results.length ? (
         <ul className={styles.list}>
           {data.results.map((info) => (
             <Card key={info.name} {...info} />
