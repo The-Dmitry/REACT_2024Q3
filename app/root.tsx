@@ -5,10 +5,10 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react'
+import Header from './core/components/header/Header'
 import FavoriteProvider from './core/components/favorite-provider/FavoriteProvider'
 import ThemeProvider from './core/components/theme-provider/ThemeProvider'
 import './index.css'
-import Header from './core/components/header/Header'
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
