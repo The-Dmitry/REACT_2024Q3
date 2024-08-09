@@ -4,6 +4,7 @@
   align-items: center;
   position: fixed;
   inset: 0;
+  backdrop-filter: blur(1px);
 }
 
 .spinner {

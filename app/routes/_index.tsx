@@ -34,7 +34,7 @@ export const loader = async ({
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'New Remix App' },
+    { title: 'Star Wars Remix' },
     { name: 'description', content: 'Welcome to Remix!' },
   ]
 }

@@ -5,15 +5,16 @@ import styles from './card.module.css'
 import CardCheckbox from '../card-checkbox/CardCheckbox'
 
 export default function Card(card: CardData) {
-  const setParams = useSearchParams()[1]
+  const [params, setParams] = useSearchParams()
   const id = card.url.replace(/[^\d]/g, '')
 
   const openDetails = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     e.stopPropagation()
-    setParams((prev) => {
-      prev.set('details', id)
-      return prev
-    })
+    params.get('details') !== id &&
+      setParams((prev) => {
+        prev.set('details', id)
+        return prev
+      })
   }
 
   return (
