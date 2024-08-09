@@ -13,15 +13,17 @@ export default function Main({ data, page }: Props) {
   return (
     <main className={styles.main}>
       {'results' in data && data.results.length ? (
-        <ul className={styles.list}>
-          {data.results.map((info) => (
-            <Card key={info.name} {...info} />
-          ))}
-        </ul>
+        <>
+          <ul className={styles.list}>
+            {data.results.map((info) => (
+              <Card key={info.name} {...info} />
+            ))}
+          </ul>
+          <Pagination data={data} page={page} />
+        </>
       ) : (
         <RestoreParameters />
       )}
-      <Pagination data={data} page={page} />
     </main>
   )
 }

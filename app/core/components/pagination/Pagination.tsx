@@ -10,7 +10,8 @@ interface Props {
 
 export default function Pagination({ data, page }: Props) {
   const setParams = useSearchParams()[1]
-  if (!data || data.count < 10) {
+
+  if (!('count' in data) || data.count < 10) {
     return null
   }
 

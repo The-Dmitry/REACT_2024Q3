@@ -9,6 +9,7 @@ import Header from './core/components/header/Header'
 import FavoriteProvider from './core/components/favorite-provider/FavoriteProvider'
 import ThemeProvider from './core/components/theme-provider/ThemeProvider'
 import './index.css'
+import FavoriteControl from './core/components/favorite-control/FavoriteControl'
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -21,6 +22,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         {children}
+
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -34,7 +36,20 @@ export default function App() {
       <FavoriteProvider>
         <Header />
         <Outlet />;
+        <FavoriteControl />
       </FavoriteProvider>
     </ThemeProvider>
   )
 }
+
+// export function ErrorBoundary() {
+//   const error = useRouteError()
+
+//   if (isRouteErrorResponse(error)) {
+//     return <NotFound />
+//   }
+
+//   // console.error('LOG: This error was caught by Error Boundary', error);
+
+//   return <Fallback />
+// }

@@ -1,4 +1,4 @@
-import CardData from '@models/CardData'
+import CardData from '~/models/CardData'
 import styles from './DownloadLink.module.css'
 
 function convertToCSV(array: CardData[]) {

@@ -1,14 +1,23 @@
 import getImageSrc from '~/shared/utils/getImageSrc/getImageSrc'
 import styles from './details.module.css'
 import CardData from '~/models/CardData'
+import { useSearchParams } from '@remix-run/react'
 
 export default function Details({ data }: { data: CardData }) {
+  const setParams = useSearchParams()[1]
+
+  const closeDetails = () => {
+    setParams((prev) => {
+      prev.delete('details')
+      return prev
+    })
+  }
   return (
     <>
       <div className={styles.details} data-testid="details">
         <button
           aria-label="close"
-          // onClick={closeDetails}
+          onClick={closeDetails}
           className={styles.close}
           title="Close"
         />

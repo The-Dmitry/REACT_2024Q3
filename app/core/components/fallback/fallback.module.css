@@ -5,6 +5,12 @@
   justify-content: center;
   align-items: center;
   gap: 40px;
+  --primary-color: blue;
+  --background: white;
+  --card-hover: blue;
+  --button-color: #24c57f;
+  --button-hover-color: #2ce958;
+  color: rgb(0, 0, 0);
 }
 
 .text {
