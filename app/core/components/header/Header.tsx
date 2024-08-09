@@ -1,23 +1,25 @@
-import { useState } from 'react'
-import styles from './header.module.css'
+import { useEffect, useState } from 'react'
 import Button from '~/shared/components/button/Button'
 import ThemeCheckbox from '~/shared/components/theme-checkbox/ThemeCheckbox'
+import { useSearchParams } from '@remix-run/react'
+import styles from './header.module.css'
 
 const Header = () => {
-  // const router = useRouter()
   const [value, setValue] = useState<string>('')
+  const [params, setParams] = useSearchParams()
 
-  // useEffect(() => {
-  //   const obj = { ...router.query }
-  //   if ('search' in obj && typeof obj['search'] === 'string') {
-  //     setValue(obj['search'])
-  //   }
-  // }, [router.query])
+  useEffect(() => {
+    const val = params.get('search')
+    val && setValue(val)
+  }, [params])
 
-  // const setNewSearch = () => {
-  //   setParams('1', 'page')
-  //   dispatch(setWord(value))
-  // }
+  const submit = () => {
+    setParams((prev) => {
+      prev.set('page', '1')
+      prev.set('search', value.trim())
+      return prev
+    })
+  }
 
   return (
     <header className={styles.header}>
@@ -27,7 +29,7 @@ const Header = () => {
         value={value}
         onInput={(e) => setValue((e.target as HTMLInputElement).value)}
       />
-      <Button warning={false} onClick={() => {}}>
+      <Button warning={false} onClick={submit}>
         Search
       </Button>
       <ThemeCheckbox />

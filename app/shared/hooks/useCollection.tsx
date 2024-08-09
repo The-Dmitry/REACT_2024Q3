@@ -1,23 +1,23 @@
-import { useState, useCallback } from "react";
-import CardData from "~/models/CardData";
+import { useState, useCallback } from 'react'
+import CardData from '~/models/CardData'
 
 export function useCollection() {
-  const [collection, setCollection] = useState<Record<string, CardData>>({});
+  const [collection, setCollection] = useState<Record<string, CardData>>({})
 
   const handleCard = useCallback(
     (card: CardData) => {
-      const obj = { ...collection };
+      const obj = { ...collection }
       if (card.name in obj) {
-        delete obj[card.name];
+        delete obj[card.name]
       } else {
-        obj[card.name] = card;
+        obj[card.name] = card
       }
-      setCollection({ ...obj });
+      setCollection({ ...obj })
     },
     [collection]
-  );
+  )
 
-  const clearCollection = useCallback(() => setCollection({}), []);
+  const clearCollection = useCallback(() => setCollection({}), [])
 
-  return { collection, handleCard, clearCollection };
+  return { collection, handleCard, clearCollection }
 }

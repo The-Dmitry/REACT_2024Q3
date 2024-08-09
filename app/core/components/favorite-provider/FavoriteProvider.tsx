@@ -1,13 +1,13 @@
-import { ReactNode } from "react";
-import { FavoriteContext } from "~/core/context/FavoriteContext";
-import { useCollection } from "~/shared/hooks/useCollection";
+import { ReactNode } from 'react'
+import { FavoriteContext } from '~/core/context/FavoriteContext'
+import { useCollection } from '~/shared/hooks/useCollection'
 
 export default function FavoriteProvider({
   children,
 }: {
-  children: ReactNode | ReactNode[];
+  children: ReactNode | ReactNode[]
 }) {
-  const { collection, handleCard, clearCollection } = useCollection();
+  const { collection, handleCard, clearCollection } = useCollection()
 
   return (
     <FavoriteContext.Provider
@@ -15,5 +15,5 @@ export default function FavoriteProvider({
     >
       {children}
     </FavoriteContext.Provider>
-  );
+  )
 }

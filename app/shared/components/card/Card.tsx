@@ -1,33 +1,24 @@
-import CardCheckbox from '../card-checkbox/CardCheckbox'
-import { useSearchParams } from 'react-router-dom'
-import { handleFavorites } from '@redux/slice/favorite-slice'
-import { useAppSelector, useAppDispatch } from '@shared/hooks/storeHooks'
-import getImageSrc from '@shared/utils/getImageSrc/getImageSrc'
-import CardData from '@models/CardData'
+import CardData from '~/models/CardData'
+import getImageSrc from '~/shared/utils/getImageSrc/getImageSrc'
+import { useSearchParams } from '@remix-run/react'
 import styles from './card.module.css'
+import CardCheckbox from '../card-checkbox/CardCheckbox'
 
 export default function Card(card: CardData) {
-  const setSearchParams = useSearchParams()[1]
-  const favoriteCards = useAppSelector((state) => state.favoriteCards)
-  const dispatch = useAppDispatch()
+  const setParams = useSearchParams()[1]
   const id = card.url.replace(/[^\d]/g, '')
 
   const openDetails = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     e.stopPropagation()
-    setSearchParams((params) => {
-      params.set('details', id)
-      return params
+    setParams((prev) => {
+      prev.set('details', id)
+      return prev
     })
   }
 
-  const handleChange = () => dispatch(handleFavorites(card))
-
   return (
-    <li className={styles.card} onClick={openDetails} data-testid="card">
-      <CardCheckbox
-        isChecked={card.name in favoriteCards}
-        handleChange={handleChange}
-      />
+    <li className={styles.card} data-testid="card" onClick={openDetails}>
+      <CardCheckbox card={card} />
       <img
         className={styles.image}
         src={getImageSrc(card.url)}

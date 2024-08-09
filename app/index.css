@@ -7,9 +7,6 @@
 
 #root {
   min-height: 100dvh;
-  /* display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 50px 1fr; */
 }
 
 body {
@@ -38,4 +35,10 @@ body {
       background-color: red;
     }
   }
+}
+
+.wrapper {
+  width: min(1300px, 100%);
+  margin-inline: auto;
+  display: flex;
 }
