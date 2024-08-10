@@ -8,8 +8,8 @@ import {
 import Header from './core/components/header/Header'
 import FavoriteProvider from './core/components/favorite-provider/FavoriteProvider'
 import ThemeProvider from './core/components/theme-provider/ThemeProvider'
-import './index.css'
 import FavoriteControl from './core/components/favorite-control/FavoriteControl'
+import './index.css'
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -35,21 +35,9 @@ export default function App() {
     <ThemeProvider>
       <FavoriteProvider>
         <Header />
-        <Outlet />;
+        <Outlet />
         <FavoriteControl />
       </FavoriteProvider>
     </ThemeProvider>
   )
 }
-
-// export function ErrorBoundary() {
-//   const error = useRouteError()
-
-//   if (isRouteErrorResponse(error)) {
-//     return <NotFound />
-//   }
-
-//   // console.error('LOG: This error was caught by Error Boundary', error);
-
-//   return <Fallback />
-// }

@@ -1,31 +1,32 @@
-import { fireEvent, render, screen } from '@testing-library/react'
-import { createMemoryRouter, RouterProvider } from 'react-router'
+import { render, screen } from '@testing-library/react'
 import { describe, it, expect } from 'vitest'
 import Pagination from './Pagination'
+import { createRemixStub } from '@remix-run/testing'
+import { cards } from '~/mocks/mockedData/cards'
 
-import { Provider } from 'react-redux'
-import { store } from '../../../redux/store'
-
-describe('Pagination', async () => {
-  it('Pagination updates URL query parameter when page changes', async () => {
-    const routes = [
+describe('Pagination component', () => {
+  it('Pagination renders buttons and disables the button corresponding to the page number', () => {
+    const Stub = createRemixStub([
       {
         path: '/',
-        element: (
-          <Provider store={store}>
-            <Pagination />
-          </Provider>
-        ),
+        Component: () => <Pagination data={cards} page="1" />,
       },
-    ]
-    const router = createMemoryRouter(routes)
-    render(<RouterProvider router={router} />)
-    const pagination = await screen.findByTestId('pagination')
-
+    ])
+    render(<Stub />)
+    const pagination = screen.getByTestId('pagination')
     expect(pagination).toBeInTheDocument()
-    fireEvent.click(pagination.children[1])
-    expect(router.state.location.search).toBe('?page=2')
-    fireEvent.click(pagination.children[0])
-    expect(router.state.location.search).toBe('?page=1')
+
+    expect(pagination.children[0]).toHaveAttribute('disabled')
+  })
+  it('Pagination doesn"t renders buttons id data.count < 10', () => {
+    const Stub = createRemixStub([
+      {
+        path: '/',
+        Component: () => <Pagination data={{ ...cards, count: 0 }} page="1" />,
+      },
+    ])
+    render(<Stub />)
+    const pagination = screen.queryByTestId('pagination')
+    expect(pagination).toBeNull()
   })
 })

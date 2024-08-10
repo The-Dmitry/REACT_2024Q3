@@ -13,21 +13,4 @@ export default defineConfig({
     }),
     tsconfigPaths(),
   ],
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: ['./src/setupTests/setupTests.ts'],
-    coverage: {
-      provider: 'v8',
-      reporter: ['text'],
-      exclude: [
-        '**/.eslintrc.cjs',
-        'vitest.config.ts',
-        'next.config.js',
-        '.next',
-        'dist',
-        '**/*.test.{js,jsx,ts,tsx}',
-      ],
-    },
-  },
 })

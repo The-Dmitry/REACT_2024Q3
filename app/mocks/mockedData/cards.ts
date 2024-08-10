@@ -1,13 +1,8 @@
-import CardData from '@models/CardData'
+import { ApiResponse } from '~/models/ApiResponse'
 
-export const cards: {
-  count: number
-  next: null
-  previous: null
-  results: CardData[]
-} = {
+export const cards: ApiResponse = {
   count: 20,
-  next: null,
+  next: undefined,
   previous: null,
   results: [
     {
