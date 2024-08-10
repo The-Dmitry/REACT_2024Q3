@@ -3,6 +3,7 @@ import ThemeProvider from '@core/components/theme-provider/ThemeProvider'
 import FavoriteProvider from '@core/components/favorite-provider/FavoriteProvider'
 import FavoriteControl from '@core/components/favorite-control/FavoriteControl'
 import '../src/index.css'
+import { Suspense } from 'react'
 
 export const metadata = {
   title: 'Star Wars Next.js',
@@ -19,7 +20,9 @@ export default function RootLayout({ children }: Props) {
       <body>
         <ThemeProvider>
           <FavoriteProvider>
-            <Header />
+            <Suspense>
+              <Header />
+            </Suspense>
             <div className="wrapper">{children}</div>
             <FavoriteControl />
           </FavoriteProvider>
