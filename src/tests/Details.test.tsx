@@ -1,8 +1,8 @@
 import { afterAll, afterEach, describe, expect, it, vi } from 'vitest'
 import { fireEvent, render, screen } from '@testing-library/react'
-import Details from './Details'
+import Details from '../core/components/details/Details'
 import { cards } from '@mocks/mockedData/cards'
-import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider'
+import { MemoryRouterProvider } from 'next-router-mock/dist/MemoryRouterProvider/next-13.5'
 import mockRouter from 'next-router-mock'
 
 vi.mock('next/router', () => vi.importActual('next-router-mock'))

@@ -1,5 +1,5 @@
 import { Suspense } from 'react'
-import People from '@pages/people/People'
+import People from '@core/components/people/People'
 import Loader from '@shared/components/loader/Loader'
 import PageProps from '@models/PageProps'
 import styles from './PeopleWithLoader.module.css'

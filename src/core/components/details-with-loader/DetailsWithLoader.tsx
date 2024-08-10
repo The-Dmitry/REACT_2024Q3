@@ -1,4 +1,4 @@
-import Details from '@pages/details/Details'
+import Details from '@core/components/details/Details'
 import Loader from '@shared/components/loader/Loader'
 import { Suspense } from 'react'
 import styles from './DetailsWithLoader.module.css'
