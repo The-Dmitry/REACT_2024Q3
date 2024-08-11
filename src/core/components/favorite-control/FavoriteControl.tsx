@@ -1,16 +1,13 @@
+'use client'
+import { useContext } from 'react'
 import Button from '@shared/components/button/Button'
-import { clearFavorites } from '@redux/slice/favorite-slice'
 import { DownloadLink } from '@shared/components/download-link/DownloadLink'
-import { useAppSelector, useAppDispatch } from '@shared/hooks/storeHooks'
+import { FavoriteContext } from '@core/context/FavoriteContext'
 import styles from './FavoriteControl.module.css'
 
 export default function FavoriteControl() {
-  const collection = useAppSelector((state) => state.favoriteCards)
-  const dispatch = useAppDispatch()
-
+  const { collection, clearCollection } = useContext(FavoriteContext)
   const { length } = Object.keys(collection)
-
-  const clearSlice = () => dispatch(clearFavorites())
 
   if (!length) {
     return null
@@ -20,7 +17,7 @@ export default function FavoriteControl() {
     <>
       <div className={styles.control}>
         <h3 className={styles.title}>Selected items: {length}</h3>
-        <Button warning={true} onClick={clearSlice}>
+        <Button warning={true} onClick={clearCollection}>
           Unselect all
         </Button>
         <Button warning={false}>

@@ -1,0 +1,5 @@
+.wrapper {
+  position: relative;
+  width: max(20%, 300px);
+  max-height: 100dvh;
+}

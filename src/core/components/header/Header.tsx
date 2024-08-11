@@ -1,25 +1,17 @@
-import Button from '@shared/components/button/Button'
-import ThemeCheckbox from '@shared/components/theme-checkbox/ThemeCheckbox'
-import UseQueryParams from '@shared/hooks/useQueryParams'
+'use client'
 import { useEffect, useState } from 'react'
-import { setWord } from '@redux/slice/search-slice'
-import { useAppDispatch, useAppSelector } from '@shared/hooks/storeHooks'
+import { useSearchParams } from 'next/navigation'
+import ThemeCheckbox from '@shared/components/theme-checkbox/ThemeCheckbox'
+import LinkWithQuery from '@shared/components/link-with-query/LinkWithQuery'
 import styles from './header.module.css'
 
 const Header = () => {
-  const { setParams } = UseQueryParams()
-  const dispatch = useAppDispatch()
-  const [value, setValue] = useState('')
-  const { search } = useAppSelector((state) => state.searchWord)
-
-  const setNewSearch = () => {
-    setParams('1', 'page')
-    dispatch(setWord(value))
-  }
+  const [value, setValue] = useState<string>('')
+  const params = useSearchParams()
 
   useEffect(() => {
-    setValue(search)
-  }, [search])
+    setValue(params?.get('search') || '')
+  }, [params])
 
   return (
     <header className={styles.header}>
@@ -29,9 +21,9 @@ const Header = () => {
         value={value}
         onInput={(e) => setValue((e.target as HTMLInputElement).value)}
       />
-      <Button warning={false} onClick={setNewSearch}>
+      <LinkWithQuery query={{ search: value.trim(), page: '1' }}>
         Search
-      </Button>
+      </LinkWithQuery>
       <ThemeCheckbox />
     </header>
   )

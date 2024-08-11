@@ -1,3 +1,4 @@
+'use client'
 import { ReactNode, useState, useCallback } from 'react'
 import { Theme, ThemeContext } from '@core/context/ThemeContext'
 import styles from './ThemeProvider.module.css'
@@ -16,7 +17,12 @@ export default function ThemeProvider({
 
   return (
     <ThemeContext.Provider value={{ theme, handleTheme }}>
-      <div className={`${styles.wrapper} ${styles[theme]}`}>{children}</div>
+      <div
+        className={`${styles.wrapper} ${styles[theme]}`}
+        data-testid="theme-provider"
+      >
+        {children}
+      </div>
     </ThemeContext.Provider>
   )
 }
