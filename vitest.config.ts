@@ -30,6 +30,7 @@ export default defineConfig({
         'app/models',
         'app/vite-env.d.ts',
         'dist',
+        'build',
         '**/*.test.{js,jsx,ts,tsx}',
       ],
     },
