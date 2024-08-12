@@ -7,12 +7,9 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@core': path.resolve(__dirname, './src/core'),
-      '@mocks': path.resolve(__dirname, './src/mocks'),
-      '@models': path.resolve(__dirname, './src/models'),
       '@pages': path.resolve(__dirname, './src/pages'),
-      '@redux': path.resolve(__dirname, './src/redux'),
-      '@shared': path.resolve(__dirname, './src/shared'),
+      '@router': path.resolve(__dirname, './src/router'),
+      '@components': path.resolve(__dirname, './src/components'),
     },
   },
   test: {

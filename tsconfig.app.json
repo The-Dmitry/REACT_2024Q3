@@ -24,12 +24,9 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": "./",
     "paths": {
-      "@core/*": ["src/core/*"],
-      "@mocks/*": ["src/mocks/*"],
-      "@models/*": ["src/models/*"],
       "@pages/*": ["src/pages/*"],
-      "@redux/*": ["src/redux/*"],
-      "@shared/*": ["src/shared/*"]
+      "@router/*": ["src/router/*"],
+      "@components/*": ["src/components/*"]
     }
   },
   "include": ["src"]
