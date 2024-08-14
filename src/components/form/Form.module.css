@@ -1,0 +1,27 @@
+.field {
+  position: relative;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
