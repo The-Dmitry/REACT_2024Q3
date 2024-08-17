@@ -18,7 +18,7 @@ const formSchema = yup.object().shape({
     .required('Age is required'),
   email: yup
     .string()
-    .email('Invalid email address')
+    .matches(/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/, 'Invalid email address')
     .required('Email is required'),
   password: yup
     .string()
