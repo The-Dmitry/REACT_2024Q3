@@ -25,3 +25,9 @@
   justify-content: center;
   gap: 7px;
 }
+
+.text_input {
+  &:required {
+    background-color: red;
+  }
+}

@@ -10,6 +10,10 @@ export default defineConfig({
       '@pages': path.resolve(__dirname, './src/pages'),
       '@router': path.resolve(__dirname, './src/router'),
       '@components': path.resolve(__dirname, './src/components'),
+      '@data': path.resolve(__dirname, './src/data'),
+      '@redux': path.resolve(__dirname, './src/redux'),
+      '@models': path.resolve(__dirname, './src/models'),
+      '@utils': path.resolve(__dirname, './src/utils'),
     },
   },
   test: {

@@ -26,7 +26,11 @@
     "paths": {
       "@pages/*": ["src/pages/*"],
       "@router/*": ["src/router/*"],
-      "@components/*": ["src/components/*"]
+      "@components/*": ["src/components/*"],
+      "@data/*": ["src/data/*"],
+      "@redux/*": ["src/redux/*"],
+      "@models/*": ["src/models/*"],
+      "@utils/*": ["src/utils/*"]
     }
   },
   "include": ["src"]
