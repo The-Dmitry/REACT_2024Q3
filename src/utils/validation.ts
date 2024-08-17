@@ -1,3 +1,4 @@
+import countries from '@data/country-list'
 import * as yup from 'yup'
 
 const FILE_SIZE = 5 * 1024 * 1024
@@ -58,7 +59,12 @@ const formSchema = yup.object().shape({
       (value) =>
         value && value instanceof File && IMG_FORMATS.includes(value.type)
     ),
-  country: yup.string().required('Country is required'),
+  country: yup
+    .string()
+    .required('Country is required')
+    .test('Predefined country', 'Country not found in the list', (value) =>
+      countries.some((item) => item.toLowerCase() === value.toLowerCase())
+    ),
 })
 
 export default formSchema

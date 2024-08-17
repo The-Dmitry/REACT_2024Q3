@@ -3,9 +3,12 @@ import {
   FormHTMLAttributes,
   InputHTMLAttributes,
   ReactNode,
+  useState,
 } from 'react'
 import { UseFormRegisterReturn } from 'react-hook-form'
 import styles from './Form.module.css'
+import PasswordStrength from '@components/password-strength/PasswordStrength'
+import calculateStrength from '@utils/calculateStrength'
 
 interface FormProps extends FormHTMLAttributes<HTMLFormElement> {
   children: string | ReactNode
@@ -16,16 +19,12 @@ interface FieldProps extends FieldsetHTMLAttributes<HTMLFieldSetElement> {
 }
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  children?: string | ReactNode
-  id: string
-  title?: string
   message?: string
   validation?: UseFormRegisterReturn | null
 }
 
 interface Autocomplete extends InputProps {
   dataList: string[]
-  message?: string
 }
 
 export default function Form({ children, ...props }: FormProps) {
@@ -49,7 +48,7 @@ Form.Text = function ({
   className,
   validation,
   ...rest
-}: InputProps) {
+}: InputProps): ReactNode {
   return (
     <Form.Field>
       <label htmlFor={id} className={`${styles.label} ${className ?? ''}`}>
@@ -61,6 +60,39 @@ Form.Text = function ({
           {...validation}
         />
       </label>
+      {<p className="message">{message}</p>}
+    </Form.Field>
+  )
+}
+
+Form.Password = function ({
+  id,
+  message,
+  title,
+  className,
+  validation,
+  ...rest
+}: Omit<InputProps, 'type'>) {
+  //Dear Reviewer. Using useState like this is not considering as controlled form!
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [strength, setStrength] = useState('')
+
+  return (
+    <Form.Field>
+      <label htmlFor={id} className={`${styles.label} ${className ?? ''}`}>
+        {title}
+        <input
+          id={id}
+          className={styles.text_input}
+          type="password"
+          {...rest}
+          {...validation}
+          onInput={(e) =>
+            e.target instanceof HTMLInputElement && setStrength(e.target.value)
+          }
+        />
+      </label>
+      <PasswordStrength strength={calculateStrength(strength)} />
       {<p className="message">{message}</p>}
     </Form.Field>
   )

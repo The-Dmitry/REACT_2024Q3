@@ -13,11 +13,16 @@ interface Props {
       ) => Promise<void>)
   register?: UseFormRegister<FieldValues>
   errors: ErrorsList
+  disableSubmit?: boolean
 }
 
-export default function UserForm({ submitFunc, register, errors }: Props) {
+export default function UserForm({
+  submitFunc,
+  register,
+  errors,
+  disableSubmit = false,
+}: Props) {
   const countries = useAppSelector((state) => state.countries)
-  console.log(errors)
 
   return (
     <Form className={styles.form} onSubmit={submitFunc} noValidate>
@@ -46,9 +51,8 @@ export default function UserForm({ submitFunc, register, errors }: Props) {
         message={errors?.email?.message}
         validation={register ? register('email') : null}
       />
-      <Form.Text
+      <Form.Password
         id="password"
-        type="password"
         title="Password"
         name="password"
         message={errors?.password?.message}
@@ -102,7 +106,9 @@ export default function UserForm({ submitFunc, register, errors }: Props) {
         message={errors?.country?.message}
         validation={register ? register('country') : null}
       />
-      <button type="submit">Sumbit</button>
+      <button disabled={disableSubmit} type="submit">
+        Sumbit
+      </button>
     </Form>
   )
 }
