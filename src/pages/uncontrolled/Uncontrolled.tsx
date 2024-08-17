@@ -1,12 +1,13 @@
-import formSchema from '@utils/validation'
-import * as yup from 'yup'
 import { useState } from 'react'
-import ErrorsList from '@models/ErrorsList'
 import UserForm from '@components/user-form/UserForm'
+import ErrorsList from '@models/ErrorsList'
+import formSchema from '@utils/validation'
+import useSaveCard from '@hooks/useSaveCard'
+import * as yup from 'yup'
 
 export default function Uncontrolled() {
   const [currentErrors, setCurrentErrors] = useState<ErrorsList>({})
-  console.log('render')
+  const saveCards = useSaveCard()
 
   const onSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -16,7 +17,8 @@ export default function Uncontrolled() {
     const data = { ...formData, terms: 'terms' in formData }
 
     try {
-      formSchema.validateSync(data, { abortEarly: false })
+      const res = formSchema.validateSync(data, { abortEarly: false })
+      saveCards(res)
     } catch (error: unknown) {
       if (error instanceof yup.ValidationError) {
         const errorsList = error.inner.reduce(

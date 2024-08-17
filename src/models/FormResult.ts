@@ -6,6 +6,6 @@ export default interface FormResult {
   password: string
   'confirm-password': string
   gender: string
-  picture: unknown
+  picture: File
   country: string
 }

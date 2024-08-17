@@ -30,7 +30,8 @@
       "@data/*": ["src/data/*"],
       "@redux/*": ["src/redux/*"],
       "@models/*": ["src/models/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@hooks/*": ["src/hooks/*"]
     }
   },
   "include": ["src"]

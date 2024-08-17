@@ -6,9 +6,9 @@ import {
   useState,
 } from 'react'
 import { UseFormRegisterReturn } from 'react-hook-form'
-import styles from './Form.module.css'
 import PasswordStrength from '@components/password-strength/PasswordStrength'
 import calculateStrength from '@utils/calculateStrength'
+import styles from './Form.module.css'
 
 interface FormProps extends FormHTMLAttributes<HTMLFormElement> {
   children: string | ReactNode
