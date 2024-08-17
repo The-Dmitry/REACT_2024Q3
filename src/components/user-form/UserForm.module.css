@@ -1,0 +1,9 @@
+.gender {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  h3 {
+    grid-column: span 2;
+    text-align: center;
+  }
+}

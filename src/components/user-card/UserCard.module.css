@@ -1,0 +1,36 @@
+.card {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 10px;
+  border: 2px dashed currentColor;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.new {
+  animation: newCard 1s linear 1s 3;
+}
+
+@keyframes newCard {
+  50% {
+    background-color: rgba(0, 255, 68, 0.605);
+  }
+}
+
+.row {
+  display: grid;
+  grid-column: span 2;
+  grid-template-columns: subgrid;
+  align-items: center;
+  span {
+    font-weight: 600;
+  }
+}
+
+.image {
+  aspect-ratio: 1 / 1;
+  grid-column: span 2;
+  width: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}

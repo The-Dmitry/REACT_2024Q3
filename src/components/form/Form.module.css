@@ -1,0 +1,63 @@
+.form {
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-inline: auto;
+  padding: 10px;
+}
+
+.field {
+  position: relative;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.text_input {
+  font-size: 18px;
+  padding: 2px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.message {
+  user-select: none;
+  text-align: center;
+  color: red;
+  height: 0;
+  grid-column: span 2;
+  font-weight: 400;
+}
+
+.country_input {
+  text-transform: capitalize;
+}
+
+.file {
+  width: fit-content;
+  margin-inline: auto;
+}
