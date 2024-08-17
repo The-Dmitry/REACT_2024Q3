@@ -1,0 +1,11 @@
+.page {
+  margin-inline: auto;
+  height: 100%;
+  width: min(1200px, 100%);
+  box-sizing: border-box;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  align-content: start;
+  gap: 20px;
+}

@@ -1,5 +1,5 @@
 export default interface FormResult {
-  terms?: boolean | undefined
+  terms?: boolean
   name: string
   age: number
   email: string

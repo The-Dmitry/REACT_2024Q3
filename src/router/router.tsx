@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { Controlled, Layout, Uncontrolled } from '@pages/index'
+import { Controlled, Layout, Uncontrolled, Users } from '@pages/index'
 
 export const enum Routes {
   MAIN = '/',
@@ -12,6 +12,10 @@ const router = createBrowserRouter([
     path: Routes.MAIN,
     element: <Layout />,
     children: [
+      {
+        path: '/',
+        element: <Users />,
+      },
       {
         path: Routes.CONTROLLED,
         element: <Controlled />,
