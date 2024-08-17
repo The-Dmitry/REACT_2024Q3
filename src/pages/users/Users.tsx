@@ -6,9 +6,13 @@ export default function Users() {
   const cards = useAppSelector((state) => state.users)
   return (
     <section className={styles.page}>
-      {cards.map((data) => (
-        <UserCard key={data.name} cardData={data} />
-      ))}
+      {cards.length ? (
+        [...cards]
+          .reverse()
+          .map((data) => <UserCard key={data.name} cardData={data} />)
+      ) : (
+        <div className={styles.empty}>List is empty!</div>
+      )}
     </section>
   )
 }

@@ -1,9 +1,13 @@
 import UserCardData from '@models/UserCardData'
 import styles from './UserCard.module.css'
 
+const NEW_CARD_TIME = 5000
+
 export default function UserCard({ cardData }: { cardData: UserCardData }) {
   return (
-    <article className={styles.card}>
+    <article
+      className={`${styles.card} ${Date.now() - cardData.time <= NEW_CARD_TIME ? styles.new : ''}`}
+    >
       <img src={cardData.picture} className={styles.image} alt="Picture"></img>
       <p className={styles.row}>
         <span>Name:</span> {cardData.name}

@@ -15,7 +15,6 @@ interface FormProps extends FormHTMLAttributes<HTMLFormElement> {
 }
 interface FieldProps extends FieldsetHTMLAttributes<HTMLFieldSetElement> {
   message?: string
-  children: string | ReactNode
 }
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -28,7 +27,11 @@ interface Autocomplete extends InputProps {
 }
 
 export default function Form({ children, ...props }: FormProps) {
-  return <form {...props}>{children}</form>
+  return (
+    <form className={styles.form} {...props}>
+      {children}
+    </form>
+  )
 }
 
 Form.Field = function ({ children, title, className, message }: FieldProps) {
@@ -36,7 +39,7 @@ Form.Field = function ({ children, title, className, message }: FieldProps) {
     <div className={`${styles.field} ${className ?? ''}`}>
       {title && <h3>{title}</h3>}
       {children}
-      {<p className="message">{message}</p>}
+      {message && <p className={styles.message}>{message}</p>}
     </div>
   )
 }
@@ -60,7 +63,7 @@ Form.Text = function ({
           {...validation}
         />
       </label>
-      {<p className="message">{message}</p>}
+      {message && <p className={styles.message}>{message}</p>}
     </Form.Field>
   )
 }
@@ -93,7 +96,7 @@ Form.Password = function ({
         />
       </label>
       <PasswordStrength strength={calculateStrength(strength)} />
-      {<p className="message">{message}</p>}
+      {message && <p className={styles.message}>{message}</p>}
     </Form.Field>
   )
 }
@@ -143,10 +146,11 @@ Form.File = function ({
         id={id}
         type="file"
         accept="image/png, image/jpeg"
+        className={styles.file}
         {...rest}
         {...validation}
       />
-      {<p className="message">{message}</p>}
+      {message && <p className={styles.message}>{message}</p>}
     </label>
   )
 }
@@ -168,6 +172,7 @@ Form.Autocomplete = function ({
         type="text"
         name={id}
         list={`${id}-list`}
+        className={`${styles.text_input} ${styles.country_input}`}
         {...rest}
         {...validation}
       />
@@ -176,7 +181,7 @@ Form.Autocomplete = function ({
           <option key={item}>{item}</option>
         ))}
       </datalist>
-      {message && <p className="message">{message}</p>}
+      {message && <p className={styles.message}>{message}</p>}
     </label>
   )
 }

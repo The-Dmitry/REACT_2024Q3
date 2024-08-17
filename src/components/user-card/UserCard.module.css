@@ -7,6 +7,16 @@
   padding: 10px;
 }
 
+.new {
+  animation: newCard 1s linear 1s 3;
+}
+
+@keyframes newCard {
+  50% {
+    background-color: rgba(0, 255, 68, 0.605);
+  }
+}
+
 .row {
   display: grid;
   grid-column: span 2;

@@ -4,6 +4,7 @@ import { UseFormRegister, FieldValues } from 'react-hook-form'
 import ErrorsList from '@models/ErrorsList'
 import { useAppSelector } from '@redux/store'
 import { BaseSyntheticEvent } from 'react'
+import Button from '@components/button/Button'
 
 interface Props {
   submitFunc:
@@ -25,7 +26,7 @@ export default function UserForm({
   const countries = useAppSelector((state) => state.countries)
 
   return (
-    <Form className={styles.form} onSubmit={submitFunc} noValidate>
+    <Form onSubmit={submitFunc} noValidate>
       <Form.Text
         id="name"
         type="text"
@@ -33,6 +34,7 @@ export default function UserForm({
         message={errors?.name?.message}
         name="name"
         validation={register ? register('name') : null}
+        className={styles.text}
       />
       <Form.Text
         id="age"
@@ -106,9 +108,9 @@ export default function UserForm({
         message={errors?.country?.message}
         validation={register ? register('country') : null}
       />
-      <button disabled={disableSubmit} type="submit">
-        Sumbit
-      </button>
+      <Button disabled={disableSubmit} type="submit">
+        Submit
+      </Button>
     </Form>
   )
 }

@@ -1,11 +1,3 @@
-.form {
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  margin-inline: auto;
-}
-
 .gender {
   display: grid;
   grid-template-columns: 1fr 1fr;

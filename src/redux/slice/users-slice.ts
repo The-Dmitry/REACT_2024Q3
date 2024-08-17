@@ -7,8 +7,8 @@ const usersSlice = createSlice({
   name: 'countries',
   initialState,
   reducers: {
-    addUser(state, action: PayloadAction<UserCardData>) {
-      state.push(action.payload)
+    addUser(state, action: PayloadAction<Omit<UserCardData, 'time'>>) {
+      state.push({ ...action.payload, time: Date.now() })
     },
   },
 })
